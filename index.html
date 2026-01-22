@@ -696,7 +696,13 @@
                     </div>
                 </div>
 
-                <form class="contact-form glass-card" id="contact-form">
+                <form class="contact-form glass-card" id="contact-form" action="https://api.web3forms.com/submit"
+                    method="POST">
+                    <!-- Web3Forms Access Key - FREE forever -->
+                    <input type="hidden" name="access_key" value="47117e1d-1a78-40f6-a646-761313297d1a">
+                    <input type="hidden" name="subject" value="New Contact from Portfolio Website">
+                    <input type="hidden" name="from_name" value="Portfolio Contact Form">
+
                     <div class="form-group">
                         <input type="text" id="name" name="name" required placeholder=" ">
                         <label for="name">Your Name</label>
