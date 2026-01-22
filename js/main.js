@@ -144,34 +144,45 @@ function initBackToTop() {
 }
 
 /**
- * Contact Form
+ * Contact Form - Web3Forms Integration
  */
 function initContactForm() {
     const form = document.getElementById('contact-form');
 
     if (!form) return;
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Get form data
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData);
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
 
-        // Create mailto link
-        const subject = encodeURIComponent(data.subject || 'Portfolio Contact');
-        const body = encodeURIComponent(
-            `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`
-        );
+        // Show loading state
+        submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
+        submitBtn.disabled = true;
 
-        // Open email client
-        window.location.href = `mailto:spharaniya18@gmail.com?subject=${subject}&body=${body}`;
+        try {
+            const formData = new FormData(form);
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            });
 
-        // Reset form
-        form.reset();
+            const result = await response.json();
 
-        // Show success message (could be enhanced with a toast notification)
-        showNotification('Message prepared! Your email client will open shortly.');
+            if (result.success) {
+                showNotification('Message sent successfully! I\'ll get back to you soon.');
+                form.reset();
+            } else {
+                showNotification('Oops! Something went wrong. Please try again.');
+            }
+        } catch (error) {
+            showNotification('Network error. Please check your connection.');
+        }
+
+        // Reset button
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
     });
 }
 
