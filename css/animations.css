@@ -231,11 +231,7 @@
     }
 }
 
-.typing-cursor::after {
-    content: '|';
-    animation: blink 1s step-end infinite;
-    color: var(--accent-primary);
-}
+/* Typing cursor styles moved to style.css */
 
 /* Particle Float */
 @keyframes particleFloat {
