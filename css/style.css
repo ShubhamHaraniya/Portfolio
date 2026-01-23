@@ -454,6 +454,28 @@ button {
     transform: translateY(20px);
 }
 
+.typing-text {
+    color: var(--accent-primary);
+}
+
+.typing-cursor {
+    color: #ffffff;
+    font-weight: 300;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
 .hero-description {
     font-size: 1.125rem;
     color: var(--text-secondary);

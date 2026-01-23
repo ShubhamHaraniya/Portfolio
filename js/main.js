@@ -6,6 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all modules
     initCustomCursor();
+    initTypingAnimation();
     initLoader();
     initNavigation();
     initSmoothScroll();
@@ -13,6 +14,53 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initActiveNavLink();
 });
+
+/**
+ * Typing Animation - Cycles through roles
+ */
+function initTypingAnimation() {
+    const typingText = document.getElementById('typing-text');
+    if (!typingText) return;
+
+    const roles = ['ML Engineer', 'AI Engineer', 'Data Scientist'];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+
+    function type() {
+        const currentRole = roles[roleIndex];
+
+        if (isDeleting) {
+            // Remove characters
+            typingText.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 50;
+        } else {
+            // Add characters
+            typingText.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
+        }
+
+        // Check if word is complete
+        if (!isDeleting && charIndex === currentRole.length) {
+            // Pause at end of word
+            typingSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            // Move to next word
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            typingSpeed = 500;
+        }
+
+        setTimeout(type, typingSpeed);
+    }
+
+    // Start typing after a short delay
+    setTimeout(type, 1000);
+}
 
 /**
  * Custom Animated Cursor - Gradient with Trail
