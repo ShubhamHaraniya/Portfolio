@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize all modules
+    initCustomCursor();
     initLoader();
     initNavigation();
     initSmoothScroll();
@@ -12,6 +13,72 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initActiveNavLink();
 });
+
+/**
+ * Custom Animated Cursor - Gradient with Trail
+ */
+function initCustomCursor() {
+    const cursorDot = document.getElementById('cursor-dot');
+
+    if (!cursorDot) return;
+
+    // Check if it's a touch device
+    if ('ontouchstart' in window) return;
+
+    let mouseX = 0, mouseY = 0;
+    let lastTrailTime = 0;
+
+    // Track mouse position & create trail
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        // Dot follows immediately
+        cursorDot.style.left = mouseX + 'px';
+        cursorDot.style.top = mouseY + 'px';
+
+        // Create trail marks (throttled)
+        const now = Date.now();
+        if (now - lastTrailTime > 40) {
+            createTrailMark(mouseX, mouseY);
+            lastTrailTime = now;
+        }
+    });
+
+    // Create trail mark
+    function createTrailMark(x, y) {
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        trail.style.left = x + 'px';
+        trail.style.top = y + 'px';
+        document.body.appendChild(trail);
+
+        // Remove after animation completes
+        setTimeout(() => trail.remove(), 800);
+    }
+
+    // Hover effects for interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .btn, .nav-link, .project-card, .skill-card, input, textarea');
+
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorDot.classList.add('hover');
+        });
+
+        el.addEventListener('mouseleave', () => {
+            cursorDot.classList.remove('hover');
+        });
+    });
+
+    // Hide cursor when it leaves the window
+    document.addEventListener('mouseleave', () => {
+        cursorDot.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+        cursorDot.style.opacity = '1';
+    });
+}
 
 /**
  * Loader
