@@ -4,17 +4,18 @@
 
 /* Custom Animated Cursor - Gradient with Trail */
 .cursor-dot {
-    width: 12px;
-    height: 12px;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(135deg, #00d4ff, #6366f1, #a855f7);
     border-radius: 50%;
     position: fixed;
     pointer-events: none;
     z-index: 99999;
     transform: translate(-50%, -50%);
     box-shadow:
-        0 0 15px rgba(99, 102, 241, 0.8),
-        0 0 30px rgba(139, 92, 246, 0.5);
+        0 0 20px rgba(0, 212, 255, 1),
+        0 0 40px rgba(99, 102, 241, 0.8),
+        0 0 60px rgba(168, 85, 247, 0.5);
     transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease;
 }
 
@@ -460,7 +461,7 @@ button {
 
 .typing-cursor {
     color: #ffffff;
-    font-weight: 300;
+    font-weight: 400;
     animation: blink 1s step-end infinite;
 }
 
