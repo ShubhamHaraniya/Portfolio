@@ -291,7 +291,73 @@
             </div>
 
             <div class="projects-grid">
-                <!-- Project 1 -->
+                <!-- Project 1: Deepfake Detection -->
+                <div class="project-card glass-card" data-tilt>
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://github.com/ShubhamHaraniya/deepfake-detection" target="_blank"
+                                rel="noopener noreferrer" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Computer Vision</span>
+                            <span class="tag">Deep Learning</span>
+                            <span class="tag">GradCAM</span>
+                            <span class="tag">PyTorch</span>
+                        </div>
+                        <h3 class="project-title">Deepfake Forensics — Freq-SE-ADDNet</h3>
+                        <p class="project-description">
+                            Dual-stream deepfake detector combining spatial (EfficientNet-B5 + SE/ADD attention) and FFT frequency analysis via a learnable FrequencyGate fusion. Achieves 94.6% accuracy on 12K test images with GradCAM explainability.
+                        </p>
+                        <a href="https://github.com/ShubhamHaraniya/deepfake-detection" target="_blank"
+                            rel="noopener noreferrer" class="project-btn">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2: Crop Disease Advisor -->
+                <div class="project-card glass-card" data-tilt>
+                    <div class="project-image">
+                        <div class="project-placeholder">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="https://github.com/ShubhamHaraniya/crop-disease-advisor" target="_blank"
+                                rel="noopener noreferrer" class="project-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://crop-disease-advisor.onrender.com/" target="_blank"
+                                rel="noopener noreferrer" class="project-link">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">MLOps</span>
+                            <span class="tag">LLM Fine-tuning</span>
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">QLoRA</span>
+                        </div>
+                        <h3 class="project-title">Crop Disease Advisor</h3>
+                        <p class="project-description">
+                            End-to-end vision-language pipeline: EfficientNet-B4 (96.8% acc, AUC 97.1%) classifies 38 crop diseases; Qwen2.5-3B QLoRA LLM generates structured treatment plans. Deployed on Render + HuggingFace Spaces.
+                        </p>
+                        <a href="https://github.com/ShubhamHaraniya/crop-disease-advisor" target="_blank"
+                            rel="noopener noreferrer" class="project-btn">
+                            View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Sherlock Holmes -->
                 <div class="project-card glass-card" data-tilt>
                     <div class="project-image">
                         <div class="project-placeholder">
@@ -307,14 +373,13 @@
                     <div class="project-content">
                         <div class="project-tags">
                             <span class="tag">LLM</span>
-                            <span class="tag">Fine-tuning</span>
-                            <span class="tag">LoRA</span>
-                            <span class="tag">Python</span>
+                            <span class="tag">QLoRA</span>
+                            <span class="tag">Modal</span>
+                            <span class="tag">Streamlit</span>
                         </div>
-                        <h3 class="project-title">Sherlock Holmes Persona</h3>
+                        <h3 class="project-title">Sherlock Holmes Persona Modeling</h3>
                         <p class="project-description">
-                            Fine-tuned Qwen 2.5 7B LLM to adopt Sherlock Holmes persona using LoRA and quantization.
-                            Includes training scripts, evaluation tools, and interactive Streamlit chat interface.
+                            Fine-tuned Qwen 2.5 7B via QLoRA (4-bit) on curated Holmes dialogues, achieving 6&times; perplexity reduction (45.3 &rarr; 7.5). Deployed on Modal serverless GPU with a Dark Detective Streamlit chat UI.
                         </p>
                         <a href="https://github.com/ShubhamHaraniya/Persona-Modeling" target="_blank"
                             rel="noopener noreferrer" class="project-btn">
@@ -323,7 +388,7 @@
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Project 4: Multimodal Price Estimator -->
                 <div class="project-card glass-card" data-tilt>
                     <div class="project-image">
                         <div class="project-placeholder">
@@ -340,12 +405,11 @@
                         <div class="project-tags">
                             <span class="tag">Multimodal AI</span>
                             <span class="tag">Ensemble</span>
-                            <span class="tag">Deep Learning</span>
+                            <span class="tag">VLM</span>
                         </div>
                         <h3 class="project-title">Multimodal Price Estimator</h3>
                         <p class="project-description">
-                            Ensemble-based pricing model leveraging parallel MLPs on CoCa and SigLIP multimodal
-                            embeddings. Achieved sMAPE of 40.06% with fast inference (0.12s/sample).
+                            Ensemble-based pricing model using parallel MLPs on CoCa and SigLIP multimodal embeddings. Achieved sMAPE of 40.06% with fast inference at 0.12s/sample.
                         </p>
                         <a href="https://github.com/ShubhamHaraniya/Multimodal-Price-Estimator" target="_blank"
                             rel="noopener noreferrer" class="project-btn">
@@ -354,7 +418,7 @@
                     </div>
                 </div>
 
-                <!-- Project 3 -->
+                <!-- Project 5: Phishing Site Detector -->
                 <div class="project-card glass-card" data-tilt>
                     <div class="project-image">
                         <div class="project-placeholder">
@@ -375,8 +439,7 @@
                         </div>
                         <h3 class="project-title">Phishing Site Detector</h3>
                         <p class="project-description">
-                            Cybersecurity tool using advanced ML algorithms to identify and flag potentially malicious
-                            websites. Scans URLs for suspicious indicators to protect users from phishing attacks.
+                            ML-powered cybersecurity tool to identify and flag malicious websites by scanning URLs for suspicious indicators, protecting users from phishing attacks.
                         </p>
                         <a href="https://github.com/ShubhamHaraniya/Phishing-Site-Detector" target="_blank"
                             rel="noopener noreferrer" class="project-btn">
