@@ -1,728 +1,755 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Shubham Haraniya - Machine Learning & AI Engineer. Building intelligent solutions with ML, Deep Learning, and GenAI.">
-    <meta name="keywords" content="Machine Learning, AI, Deep Learning, MLOps, GenAI, LLM, Data Science, Portfolio">
-    <meta name="author" content="Shubham Haraniya">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shubham Haraniya — AI/ML Engineer building end-to-end intelligent systems</title>
+  <meta name="description" content="Shubham Haraniya is an M.Tech AI student at IIT Jodhpur building end-to-end ML and GenAI systems: LLM fine-tuning, RAG and agents, computer vision, and deployment. GATE DA 2025 AIR 121.">
+  <meta name="author" content="Shubham Haraniya">
+  <meta name="theme-color" content="#F5F3EE">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Shubham Haraniya | ML & AI Engineer">
-    <meta property="og:description"
-        content="Machine Learning & AI Engineer building intelligent, data-driven solutions.">
-    <meta property="og:type" content="website">
+  <!-- Social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Shubham Haraniya — AI/ML Engineer">
+  <meta property="og:description" content="End-to-end ML and GenAI systems: LLM fine-tuning, RAG and agents, computer vision, and deployment. M.Tech AI, IIT Jodhpur.">
+  <meta property="og:image" content="assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shubham Haraniya — AI/ML Engineer">
+  <meta name="twitter:description" content="End-to-end ML and GenAI systems: LLM fine-tuning, RAG and agents, computer vision, and deployment.">
+  <meta name="twitter:image" content="assets/og-image.png">
 
-    <!-- Favicon -->
-    <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
-    <link rel="icon" type="image/svg+xml" href="favicon.png">
+  <link rel="icon" type="image/png" href="favicon.png">
 
-    <title>Shubham Haraniya | ML & AI Engineer</title>
+  <!-- Self-hosted variable fonts -->
+  <link rel="preload" href="assets/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
-        rel="stylesheet">
+  <script>
+    /* Runs before first paint: theme, motion preference, loader state */
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js');
+      try {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('reduce');
+        var t = localStorage.getItem('portfolio-theme');
+        if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
+        if (sessionStorage.getItem('sh-loaded')) d.classList.add('no-loader');
+      } catch (e) {}
+      if (d.classList.contains('reduce')) d.classList.add('no-loader');
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shubham Haraniya",
+    "jobTitle": "AI/ML Engineer",
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology, Jodhpur" },
+      { "@type": "CollegeOrUniversity", "name": "L.D. College of Engineering, Ahmedabad" }
+    ],
+    "sameAs": [
+      "https://github.com/ShubhamHaraniya",
+      "https://www.linkedin.com/in/shubham-haraniya"
+    ]
+  }
+  </script>
 </head>
-
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-outline" id="cursor-outline"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- 3D Background Canvas -->
-    <canvas id="three-canvas"></canvas>
+  <!-- Cursor accents (fine pointers only) -->
+  <div id="cursor-ring" aria-hidden="true"></div>
+  <div id="cursor-label" aria-hidden="true"></div>
 
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-content">
-            <div class="loader-spinner"></div>
-            <p>Loading Experience...</p>
-        </div>
+  <!-- Intro loader -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader-top">
+      <span class="mono">Shubham Haraniya</span>
+      <span class="mono">AI / ML Engineer</span>
     </div>
+    <div class="loader-count"><span id="loader-num">0</span><i>%</i></div>
+    <div class="loader-bar"><span id="loader-bar"></span></div>
+  </div>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">
-                <span class="logo-text">Shubham Haraniya</span>
-            </a>
+  <!-- Scroll progress -->
+  <div id="progress" aria-hidden="true"><span></span></div>
 
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
+  <!-- ─────────── HEADER ─────────── -->
+  <header id="topbar" class="topbar">
+    <a href="#home" class="brand" aria-label="Shubham Haraniya — home">
+      <span class="brand-mark" aria-hidden="true">SH</span>
+      <span class="brand-name">Shubham Haraniya</span>
+    </a>
 
-            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li><a href="#home" data-nav="home">Home</a></li>
+        <li><a href="#about" data-nav="about">About</a></li>
+        <li><a href="#projects" data-nav="projects">Projects</a></li>
+        <li><a href="#skills" data-nav="skills">Skills</a></li>
+        <li><a href="#experience" data-nav="experience">Experience</a></li>
+        <li><a href="#contact" data-nav="contact">Contact</a></li>
+      </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-text">
-                <p class="hero-greeting">
-                    <span class="greeting-line"></span>
-                    Hello, I'm
-                </p>
-                <h1 class="hero-title">
-                    <span class="title-line">Shubham</span>
-                    <span class="title-line gradient-text">Haraniya</span>
-                </h1>
-                <p class="hero-role">
-                    <span class="typing-text" id="typing-text"></span>
-                    <span class="typing-cursor">|</span>
-                </p>
-                <p class="hero-description">
-                    Building intelligent solutions through Machine Learning, Deep Learning, and Generative AI.
-                    Transforming complex data into scalable, production-ready AI systems.
-                </p>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">
-                        <span>View My Work</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <span>Let's Connect</span>
-                    </a>
-                </div>
-                <div class="hero-social">
-                    <a href="https://github.com/ShubhamHaraniya" target="_blank" rel="noopener noreferrer"
-                        class="social-link" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/shubham-haraniya" target="_blank" rel="noopener noreferrer"
-                        class="social-link" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="mailto:spharaniya18@gmail.com" class="social-link" aria-label="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
+    <div class="topbar-actions">
+      <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+        <svg class="ico-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <svg class="ico-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a href="assets/resume/Shubham-Haraniya-Resume-DS.pdf" class="btn btn-lime btn-sm topbar-resume" target="_blank" rel="noopener">
+        <span>Resume</span>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5l4-4M3 14h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button id="menu-btn" class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="menu-btn-label">Menu</span>
+        <span class="menu-btn-bars" aria-hidden="true"><i></i><i></i></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div id="menu" class="menu" inert aria-label="Site menu" role="dialog" aria-modal="true">
+    <nav aria-label="Mobile">
+      <ol class="menu-links">
+        <li><a href="#home" data-num="00">Home</a></li>
+        <li><a href="#about" data-num="01">About</a></li>
+        <li><a href="#projects" data-num="02">Projects</a></li>
+        <li><a href="#skills" data-num="03">Skills</a></li>
+        <li><a href="#experience" data-num="04">Experience</a></li>
+        <li><a href="#contact" data-num="05">Contact</a></li>
+      </ol>
+    </nav>
+    <div class="menu-foot">
+      <a class="btn btn-lime" href="assets/resume/Shubham-Haraniya-Resume-DS.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+      <a class="menu-mail mono" href="mailto:spharaniya18@gmail.com">spharaniya18@gmail.com</a>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner wrap">
+        <div class="hero-top mono">
+          <span class="dot-live" aria-hidden="true"></span>
+          <span>M.Tech AI · IIT Jodhpur</span>
+          <span class="sep" aria-hidden="true">/</span>
+          <span>Open to roles &amp; collaborations</span>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
+
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1 id="hero-title" class="hero-title">
+              <span class="line"><span class="line-inner">Engineering</span></span>
+              <span class="line"><span class="line-inner">intelligence.</span></span>
+              <span class="line"><span class="line-inner">Building <mark class="hl"><span>AI</span></mark></span></span>
+              <span class="line"><span class="line-inner">that works.</span></span>
+            </h1>
+
+            <p class="hero-lede" data-hero-fade>
+              I’m Shubham, an AI/ML engineer who ships whole systems — from the model and its
+              evaluation to the API, container and deployment that put it in front of users.
+              LLM fine-tuning, retrieval and agents, and computer vision.
+            </p>
+
+            <div class="hero-cta" data-hero-fade>
+              <a href="#projects" class="btn btn-lime btn-magnetic" data-cursor="Scroll">
+                <span>Explore my work</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.5v11M3.5 9 8 13.5 12.5 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="assets/resume/Shubham-Haraniya-Resume-DS.pdf" class="btn btn-line btn-magnetic" target="_blank" rel="noopener">
+                <span>View resume</span>
+              </a>
+              <a href="https://www.linkedin.com/in/shubham-haraniya" class="btn btn-line btn-magnetic" target="_blank" rel="noopener">
+                <span>Connect on LinkedIn</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 11.5 11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
             </div>
-            <p>Scroll to explore</p>
+          </div>
+
+          <!-- Illustrative agentic-RAG loop -->
+          <figure class="hero-graph" aria-hidden="true">
+            <svg viewBox="0 0 560 560" role="img" focusable="false" class="graph">
+              <circle class="g-ring" cx="280" cy="280" r="236"/>
+              <circle class="g-ring g-ring-2" cx="280" cy="280" r="168"/>
+
+              <g class="g-edges" fill="none">
+                <path id="gp1" pathLength="1" d="M158,118 Q285,58 392,106"/>
+                <path id="gp2" pathLength="1" d="M440,132 Q500,200 486,268"/>
+                <path id="gp3" pathLength="1" d="M440,300 Q380,300 326,288"/>
+                <path id="gp4" pathLength="1" d="M300,324 Q330,410 392,444"/>
+                <path id="gp5" pathLength="1" d="M258,324 Q214,400 178,440"/>
+                <path id="gp6" pathLength="1" d="M236,280 Q170,284 118,290"/>
+              </g>
+
+              <g class="g-packets">
+                <circle r="4.5" class="pk"><animateMotion dur="3.6s" repeatCount="indefinite" begin="0s"><mpath href="#gp1"/></animateMotion></circle>
+                <circle r="4.5" class="pk"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0.9s"><mpath href="#gp2"/></animateMotion></circle>
+                <circle r="4.5" class="pk"><animateMotion dur="3.0s" repeatCount="indefinite" begin="1.8s"><mpath href="#gp3"/></animateMotion></circle>
+                <circle r="4.5" class="pk pk-b"><animateMotion dur="3.4s" repeatCount="indefinite" begin="0.4s"><mpath href="#gp4"/></animateMotion></circle>
+                <circle r="4.5" class="pk pk-b"><animateMotion dur="3.4s" repeatCount="indefinite" begin="1.5s"><mpath href="#gp6"/></animateMotion></circle>
+              </g>
+
+              <g class="g-nodes">
+                <g class="g-node" transform="translate(120 120)"><rect x="-50" y="-18" width="100" height="36" rx="18"/><text y="4.5">Query</text></g>
+                <g class="g-node" transform="translate(440 112)"><rect x="-54" y="-18" width="108" height="36" rx="18"/><text y="4.5">Retriever</text></g>
+                <g class="g-node" transform="translate(486 290)"><rect x="-54" y="-18" width="108" height="36" rx="18"/><text y="4.5">Reranker</text></g>
+                <g class="g-node" transform="translate(410 462)"><rect x="-46" y="-18" width="92" height="36" rx="18"/><text y="4.5">Tools</text></g>
+                <g class="g-node" transform="translate(150 462)"><rect x="-50" y="-18" width="100" height="36" rx="18"/><text y="4.5">Memory</text></g>
+                <g class="g-node" transform="translate(76 292)"><rect x="-42" y="-18" width="84" height="36" rx="18"/><text y="4.5">Eval</text></g>
+                <g class="g-core" transform="translate(280 280)"><circle class="core-pulse" r="52"/><circle class="core" r="46"/><text y="5">LLM</text></g>
+              </g>
+            </svg>
+            <figcaption class="mono">Illustrative · an agentic RAG loop</figcaption>
+          </figure>
         </div>
+
+        <ul class="hero-stats" data-hero-fade>
+          <li>
+            <p class="stat-big"><span class="stat-pre mono">AIR</span><span data-count="121">121</span></p>
+            <p class="stat-cap mono">GATE Data Science &amp; AI 2025 · score 780</p>
+          </li>
+          <li>
+            <p class="stat-big"><span class="stat-pre mono">Rank</span><span data-count="11">11</span></p>
+            <p class="stat-cap mono">Amazon ML Challenge 2025 · 82,000+ teams</p>
+          </li>
+          <li>
+            <p class="stat-big"><span data-count="9.0" data-decimals="1">9.0</span><span class="stat-suf mono">CGPA</span></p>
+            <p class="stat-cap mono">M.Tech AI · IIT Jodhpur</p>
+          </li>
+          <li>
+            <p class="stat-big"><span data-count="70">70</span><span class="stat-suf mono">%+</span></p>
+            <p class="stat-cap mono">Less manual data collection · IntelKit</p>
+          </li>
+        </ul>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section about" id="about">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Get To Know Me</span>
-                <h2 class="section-title">About Me</h2>
-            </div>
+    <!-- Sheet that slides over the hero -->
+    <div class="sheet">
 
-            <div class="about-content">
-                <div class="about-card glass-card">
-                    <div class="about-text">
-                        <p>
-                            I'm a <strong>Machine Learning & Deep Learning Engineer</strong> who builds 
-                            intelligent systems at the intersection of <strong>Generative AI, Agentic AI, 
-                            and real-world deployment</strong>.
-                        </p>
-                        <p>
-                            From <strong>fine-tuning LLMs</strong> with LoRA/QLoRA and RLHF, to building 
-                            <strong>autonomous multi-agent pipelines</strong> with LangGraph, CrewAI, and MCP — 
-                            I work across the full stack of modern AI. My projects span RAG systems, 
-                            Vision-Language Models, Context Engineering, and Computer Vision, 
-                            always with a focus on shipping things that actually work.
-                        </p>
-                        <p>
-                            Currently pursuing <strong>M.Tech in AI at IIT Jodhpur</strong> — 
-                            previously ranked <strong>AIR 121 in GATE DA 2025</strong>. 
-                            I care deeply about building AI that is not just accurate, 
-                            but production-ready and explainable.
-                        </p>
-                    </div>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="10">0</span>
-                            <span class="stat-plus">+</span>
-                            <span class="stat-label">Projects</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="11">0</span>
-                            <span class="stat-plus">+</span>
-                            <span class="stat-label">Repositories</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="15">0</span>
-                            <span class="stat-plus">+</span>
-                            <span class="stat-label">Technologies</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- Ticker -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>PyTorch</span><i>/</i><span>LoRA · QLoRA</span><i>/</i><span>RAG · reranking</span><i>/</i><span>LangGraph</span><i>/</i><span>MCP</span><i>/</i><span>Hugging Face</span><i>/</i><span>vLLM</span><i>/</i><span>Grad-CAM</span><i>/</i><span>FastAPI</span><i>/</i><span>Docker</span><i>/</i><span>MLflow</span><i>/</i><span>Weights &amp; Biases</span><i>/</i>
+          <span>PyTorch</span><i>/</i><span>LoRA · QLoRA</span><i>/</i><span>RAG · reranking</span><i>/</i><span>LangGraph</span><i>/</i><span>MCP</span><i>/</i><span>Hugging Face</span><i>/</i><span>vLLM</span><i>/</i><span>Grad-CAM</span><i>/</i><span>FastAPI</span><i>/</i><span>Docker</span><i>/</i><span>MLflow</span><i>/</i><span>Weights &amp; Biases</span><i>/</i>
         </div>
-    </section>
+      </div>
 
-    <!-- Skills Section -->
-    <section class="section skills" id="skills">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">What I Bring</span>
-                <h2 class="section-title">Skills & Technologies</h2>
+      <!-- ═══════════ ABOUT ═══════════ -->
+      <section id="about" class="about section" aria-labelledby="about-title">
+        <div class="wrap">
+          <p class="eyebrow mono"><span>01</span> About</p>
+          <h2 id="about-title" class="visually-hidden">About Shubham</h2>
+
+          <p class="manifesto" data-scrub-words>
+            Models are the easy part to demo. I care about the rest: the evaluation that shows whether it works, the API that serves it, and the system that keeps it honest in production.
+          </p>
+
+          <div class="about-grid">
+            <div class="about-copy">
+              <p class="reveal">
+                I’m an M.Tech student in Artificial Intelligence at <strong>IIT Jodhpur</strong> (CGPA 9.0), following a B.E. in Computer Engineering at L.D. College of Engineering, Ahmedabad.
+              </p>
+              <p class="reveal">
+                My work sits between research and shipping: fine-tuning language models with LoRA/QLoRA, building vision models that can explain their decisions, and wrapping them in APIs, containers and experiment tracking. As a data-science intern at IntelKit Solutions I built a deepfake-detection system and automated data-acquisition pipelines that cut manual collection effort by over 70%.
+              </p>
+              <p class="reveal">
+                I’m most interested in problems where a model alone isn’t the answer — retrieval and reranking, agents that use tools, rigorous LLM evaluation, and the guardrails that make these systems trustworthy.
+              </p>
             </div>
 
-            <div class="skills-grid">
-                <!-- Programming & Core Concepts -->
-                <div class="skill-card glass-card" data-tilt>
-                    <div class="skill-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="skill-title">Programming & Core Concepts</h3>
-                    <div class="tech-badges">
-                        <span class="tech-badge"><i class="fab fa-python"></i> Python (Advanced)</span>
-                        <span class="tech-badge"><i class="fas fa-database"></i> SQL</span>
-                        <span class="tech-badge"><i class="fas fa-sitemap"></i> DSA</span>
-                        <span class="tech-badge"><i class="fas fa-server"></i> DBMS</span>
-                    </div>
-                </div>
-
-                <!-- Technologies -->
-                <div class="skill-card glass-card" data-tilt>
-                    <div class="skill-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3 class="skill-title">Technologies</h3>
-                    <div class="tech-badges">
-                        <span class="tech-badge"><i class="fas fa-magic"></i> Generative AI</span>
-                        <span class="tech-badge"><i class="fas fa-robot"></i> LLM</span>
-                        <span class="tech-badge"><i class="fas fa-microchip"></i> SLM</span>
-                        <span class="tech-badge"><i class="fas fa-eye"></i> VLM</span>
-                        <span class="tech-badge"><i class="fas fa-network-wired"></i> Deep Learning</span>
-                        <span class="tech-badge"><i class="fas fa-chart-line"></i> Machine Learning</span>
-                        <span class="tech-badge"><i class="fas fa-language"></i> NLP</span>
-                        <span class="tech-badge"><i class="fas fa-cogs"></i> MLOps</span>
-                        <span class="tech-badge"><i class="fas fa-search"></i> RAG</span>
-                        <span class="tech-badge"><i class="fas fa-project-diagram"></i> Agentic AI</span>
-                        <span class="tech-badge"><i class="fas fa-align-left"></i> Context Engineering</span>
-                    </div>
-                </div>
-
-                <!-- Architectures & Methods -->
-                <div class="skill-card glass-card" data-tilt>
-                    <div class="skill-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <h3 class="skill-title">Architectures & Methods</h3>
-                    <div class="tech-badges">
-                        <span class="tech-badge"><i class="fas fa-th"></i> Vision Transformer (ViT)</span>
-                        <span class="tech-badge"><i class="fas fa-compress-arrows-alt"></i> Autoencoder</span>
-                        <span class="tech-badge"><i class="fas fa-random"></i> VAE</span>
-                        <span class="tech-badge"><i class="fas fa-bolt"></i> ReACT Agent</span>
-                        <span class="tech-badge"><i class="fas fa-users"></i> Multi-Agent Systems</span>
-                        <span class="tech-badge"><i class="fas fa-user-check"></i> Human-in-the-Loop</span>
-                        <span class="tech-badge"><i class="fas fa-graduation-cap"></i> SFT</span>
-                        <span class="tech-badge"><i class="fas fa-trophy"></i> RLHF</span>
-                        <span class="tech-badge"><i class="fas fa-balance-scale"></i> DPO</span>
-                        <span class="tech-badge"><i class="fas fa-sliders-h"></i> LoRA / QLoRA</span>
-                        <span class="tech-badge"><i class="fas fa-gavel"></i> LLM-as-Judge</span>
-                    </div>
-                </div>
-
-                <!-- Libraries & Frameworks + Tools -->
-                <div class="skill-card glass-card full-width" data-tilt>
-                    <div class="skill-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <h3 class="skill-title">Libraries, Frameworks & Tools</h3>
-                    <div class="tech-badges">
-                        <span class="tech-badge"><i class="fas fa-fire"></i> PyTorch</span>
-                        <span class="tech-badge"><i class="fas fa-link"></i> LangChain</span>
-                        <span class="tech-badge"><i class="fas fa-project-diagram"></i> LangGraph</span>
-                        <span class="tech-badge"><i class="fas fa-chart-bar"></i> Scikit-learn</span>
-                        <span class="tech-badge"><i class="fas fa-calculator"></i> NumPy</span>
-                        <span class="tech-badge"><i class="fas fa-table"></i> Pandas</span>
-                        <span class="tech-badge"><i class="fas fa-chart-pie"></i> Power BI</span>
-                        <span class="tech-badge"><i class="fas fa-tachometer-alt"></i> vLLM</span>
-                        <span class="tech-badge"><i class="fas fa-search-plus"></i> LlamaIndex</span>
-                        <span class="tech-badge"><i class="fab fa-git-alt"></i> Git</span>
-                        <span class="tech-badge"><i class="fab fa-github"></i> GitHub</span>
-                        <span class="tech-badge"><i class="fab fa-microsoft"></i> Azure</span>
-                        <span class="tech-badge"><i class="fas fa-leaf"></i> MongoDB</span>
-                        <span class="tech-badge"><i class="fas fa-cloud"></i> Modal</span>
-                        <span class="tech-badge"><i class="fas fa-tv"></i> Streamlit</span>
-                        <span class="tech-badge"><i class="fab fa-docker"></i> Docker</span>
-                        <span class="tech-badge"><i class="fas fa-spider"></i> Selenium</span>
-                        <span class="tech-badge"><i class="fas fa-code"></i> BeautifulSoup</span>
-                        <span class="tech-badge"><i class="fas fa-plug"></i> MCP</span>
-                    </div>
-                </div>
-            </div>
+            <dl class="about-facts reveal">
+              <div><dt class="mono">Now</dt><dd>M.Tech, Artificial Intelligence<br>IIT Jodhpur · 2025 – present</dd></div>
+              <div><dt class="mono">Focus</dt><dd>Generative AI &amp; LLM fine-tuning, agentic AI &amp; RAG, computer vision</dd></div>
+              <div><dt class="mono">Based in</dt><dd>Jodhpur, India</dd></div>
+              <div><dt class="mono">Open to</dt><dd>AI/ML engineering roles, research collaborations</dd></div>
+            </dl>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Projects Section -->
-    <section class="section projects" id="projects">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">What I've Built</span>
-                <h2 class="section-title">Featured Projects</h2>
+      <!-- ═══════════ PROJECTS ═══════════ -->
+      <section id="projects" class="projects section section-dark" aria-labelledby="projects-title">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow mono"><span>02</span> Selected work</p>
+            <h2 id="projects-title" class="display" data-split>Systems, not<br>just <em>notebooks.</em></h2>
+            <p class="section-lede reveal">
+              Four projects drawn from my public repositories — the problem, the design, what I built, and what the numbers do and don’t show.
+            </p>
+          </div>
+
+          <ol class="case-index reveal-stagger" aria-label="Project index">
+            <li><a href="#deepfake"><span class="mono">01</span><span class="ci-name">Deepfake Forensics</span><span class="ci-meta mono">94.6% acc.</span></a></li>
+            <li><a href="#crop"><span class="mono">02</span><span class="ci-name">Crop Disease Advisor</span><span class="ci-meta mono">Vision + LLM</span></a></li>
+            <li><a href="#persona"><span class="mono">03</span><span class="ci-name">Sherlock Persona Model</span><span class="ci-meta mono">45.3 → 7.5 PPL</span></a></li>
+            <li><a href="#price"><span class="mono">04</span><span class="ci-name">Multimodal Price Estimator</span><span class="ci-meta mono">40.06% sMAPE</span></a></li>
+          </ol>
+
+          <!-- 01 — Deepfake -->
+          <article id="deepfake" class="case" aria-labelledby="deepfake-title">
+            <div class="case-rule" data-line></div>
+            <header class="case-head">
+              <span class="case-num" data-parallax="40" aria-hidden="true">01</span>
+              <div>
+                <p class="case-kicker mono">Computer vision · Deep learning · Feb – Apr 2026</p>
+                <h3 id="deepfake-title" class="case-title">Deepfake Forensics<em>Frequency-aware SE-ADDNet</em></h3>
+              </div>
+            </header>
+
+            <div class="case-grid">
+              <dl class="case-copy">
+                <div class="reveal"><dt class="mono">Problem</dt><dd>Faces can now be faked by inpainting, identity swaps or text-to-image models. A detector has to catch all of them — and a bare REAL/FAKE label gives a reviewer nothing to check.</dd></div>
+                <div class="reveal"><dt class="mono">Solution</dt><dd>A dual-stream network. A spatial stream (EfficientNet-B5 with SE channel attention and ADD spatial attention) reads manipulation cues in pixels; a frequency stream runs the image’s FFT magnitude spectrum through a small CNN. A learnable, sigmoid-gated <em>FrequencyGate</em> fuses the two before classification, and Grad-CAM shows which regions drove the call.</dd></div>
+                <div class="reveal"><dt class="mono">What I built</dt><dd>The full pipeline: model, focal loss (γ = 2) with weighted sampling for the roughly 3:1 fake-to-real imbalance, FP16 mixed-precision training with cosine schedule and early stopping on validation AUC, evaluation scripts, CLI inference that emits a JSON report, and a Streamlit app serving Grad-CAM localisation.</dd></div>
+                <div class="reveal"><dt class="mono">Limits</dt><dd>Results come from one benchmark (DeepFakeFace, an ~80/10/10 split of ~120K images). No cross-dataset evaluation is reported, so read the numbers as in-distribution.</dd></div>
+              </dl>
+
+              <aside class="case-panel" data-tilt aria-label="Deepfake Forensics: results and pipeline">
+                <p class="panel-label mono">Test set · 12,000 images</p>
+                <ul class="metrics">
+                  <li><span class="m-num"><b data-count="94.6" data-decimals="1">94.6</b><small>%</small></span><span class="m-cap mono">Accuracy</span></li>
+                  <li><span class="m-num"><b data-count="96.3" data-decimals="1">96.3</b><small>%</small></span><span class="m-cap mono">F1</span></li>
+                  <li><span class="m-num"><b data-count="98.95" data-decimals="2">98.95</b><small>%</small></span><span class="m-cap mono">AUC</span></li>
+                </ul>
+                <p class="panel-label mono">Pipeline</p>
+                <ol class="flow">
+                  <li><span class="mono">in</span>Face image, 256 × 256</li>
+                  <li class="fork"><span class="mono">2×</span><div><em>Spatial</em> · EfficientNet-B5 + SE/ADD<br><em>Frequency</em> · FFT → 3-block CNN</div></li>
+                  <li><span class="mono">fuse</span>Learnable FrequencyGate → 512-d</li>
+                  <li><span class="mono">out</span>Real / Fake + Grad-CAM</li>
+                </ol>
+              </aside>
             </div>
 
-            <div class="projects-grid">
-                <!-- Project 1: Deepfake Detection -->
-                <div class="project-card glass-card" data-tilt>
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/ShubhamHaraniya/deepfake-detection" target="_blank"
-                                rel="noopener noreferrer" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">Computer Vision</span>
-                            <span class="tag">Deep Learning</span>
-                            <span class="tag">GradCAM</span>
-                            <span class="tag">PyTorch</span>
-                        </div>
-                        <h3 class="project-title">Deepfake Forensics — Freq-SE-ADDNet</h3>
-                        <p class="project-description">
-                            Dual-stream deepfake detector combining spatial (EfficientNet-B5 + SE/ADD attention) and FFT frequency analysis via a learnable FrequencyGate fusion. Achieves 94.6% accuracy on 12K test images with GradCAM explainability.
-                        </p>
-                        <a href="https://github.com/ShubhamHaraniya/deepfake-detection" target="_blank"
-                            rel="noopener noreferrer" class="project-btn">
-                            View Project <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 2: Crop Disease Advisor -->
-                <div class="project-card glass-card" data-tilt>
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/ShubhamHaraniya/crop-disease-advisor" target="_blank"
-                                rel="noopener noreferrer" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://crop-disease-advisor.onrender.com/" target="_blank"
-                                rel="noopener noreferrer" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">MLOps</span>
-                            <span class="tag">LLM Fine-tuning</span>
-                            <span class="tag">FastAPI</span>
-                            <span class="tag">QLoRA</span>
-                        </div>
-                        <h3 class="project-title">Crop Disease Advisor</h3>
-                        <p class="project-description">
-                            End-to-end vision-language pipeline: EfficientNet-B4 (96.8% acc, AUC 97.1%) classifies 38 crop diseases; Qwen2.5-3B QLoRA LLM generates structured treatment plans. Deployed on Render + HuggingFace Spaces.
-                        </p>
-                        <a href="https://github.com/ShubhamHaraniya/crop-disease-advisor" target="_blank"
-                            rel="noopener noreferrer" class="project-btn">
-                            View Project <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Project 3: Sherlock Holmes -->
-                <div class="project-card glass-card" data-tilt>
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-user-secret"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <a href="https://github.com/ShubhamHaraniya/Persona-Modeling" target="_blank"
-                                rel="noopener noreferrer" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tags">
-                            <span class="tag">LLM</span>
-                            <span class="tag">QLoRA</span>
-                            <span class="tag">Modal</span>
-                            <span class="tag">Streamlit</span>
-                        </div>
-                        <h3 class="project-title">Sherlock Holmes Persona Modeling</h3>
-                        <p class="project-description">
-                            Fine-tuned Qwen 2.5 7B via QLoRA (4-bit) on curated Holmes dialogues, achieving 6&times; perplexity reduction (45.3 &rarr; 7.5). Deployed on Modal serverless GPU with a Dark Detective Streamlit chat UI.
-                        </p>
-                        <a href="https://github.com/ShubhamHaraniya/Persona-Modeling" target="_blank"
-                            rel="noopener noreferrer" class="project-btn">
-                            View Project <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="projects-cta">
-                <a href="https://github.com/ShubhamHaraniya" target="_blank" rel="noopener noreferrer"
-                    class="btn btn-primary">
-                    <i class="fab fa-github"></i>
-                    <span>View All Projects on GitHub</span>
+            <footer class="case-foot">
+              <ul class="tags">
+                <li>PyTorch</li><li>timm · EfficientNet-B5</li><li>FocalLoss</li><li>FP16 AMP</li><li>Grad-CAM</li><li>Streamlit</li>
+              </ul>
+              <div class="case-links">
+                <a class="btn btn-lime" href="https://github.com/ShubhamHaraniya/deepfake-detection" target="_blank" rel="noopener" data-cursor="Open">
+                  <span>View on GitHub</span>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 11.5 11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
+              </div>
+            </footer>
+          </article>
+
+          <!-- 02 — Crop Disease Advisor -->
+          <article id="crop" class="case" aria-labelledby="crop-title">
+            <div class="case-rule" data-line></div>
+            <header class="case-head">
+              <span class="case-num" data-parallax="40" aria-hidden="true">02</span>
+              <div>
+                <p class="case-kicker mono">MLOps · Applied AI · Jan – Feb 2026</p>
+                <h3 id="crop-title" class="case-title">Crop Disease Advisor<em>Vision + LLM pipeline</em></h3>
+              </div>
+            </header>
+
+            <div class="case-grid">
+              <dl class="case-copy">
+                <div class="reveal"><dt class="mono">Problem</dt><dd>A farmer photographing a sick leaf needs more than a class label. They need a plan — what to treat it with, how much yield is at risk, and what suits their region and season.</dd></div>
+                <div class="reveal"><dt class="mono">Solution</dt><dd>Two stages. An EfficientNet-B4 classifier identifies the disease across 38 classes (14 crops, PlantVillage). Its output feeds a Qwen2.5-3B model, QLoRA-tuned to return a structured JSON plan with organic and chemical options, yield impact and region-season advice. If the JSON fails to parse, the advisor retries at a lower temperature, then falls back to a curated lookup table.</dd></div>
+                <div class="reveal"><dt class="mono">What I built</dt><dd>Both models, the instruction dataset (diseases × regions × seasons × farmer profiles), a FastAPI service with a Vite front end and multi-stage Docker build, W&amp;B experiment tracking, model releases on the Hugging Face Hub, a pytest suite covering the API, model forward pass and output schema, and deployments on Render and Hugging Face Spaces.</dd></div>
+                <div class="reveal"><dt class="mono">Limits</dt><dd>The LLM stage needs a GPU, so the CPU deployment serves the lookup fallback. Coverage is 38 classes, and the advice is model-generated decision support, not agronomic guidance. The tests use mocked weights, so they check structure rather than accuracy.</dd></div>
+              </dl>
+
+              <aside class="case-panel" data-tilt aria-label="Crop Disease Advisor: results and pipeline">
+                <p class="panel-label mono">Evaluation</p>
+                <ul class="metrics">
+                  <li><span class="m-num"><b data-count="96.8" data-decimals="1">96.8</b><small>%</small></span><span class="m-cap mono">Accuracy · 38 classes</span></li>
+                  <li><span class="m-num"><b data-count="97.1" data-decimals="1">97.1</b><small>%</small></span><span class="m-cap mono">AUC</span></li>
+                  <li><span class="m-num"><b data-count="81.68" data-decimals="2">81.68</b><small>%</small></span><span class="m-cap mono">BERTScore F1</span></li>
+                </ul>
+                <p class="panel-label mono">Pipeline</p>
+                <ol class="flow">
+                  <li><span class="mono">in</span>Leaf photo, 224 × 224</li>
+                  <li><span class="mono">see</span>EfficientNet-B4 → disease + confidence</li>
+                  <li><span class="mono">plan</span>Qwen2.5-3B + QLoRA → JSON advice</li>
+                  <li><span class="mono">guard</span>Retry, then lookup fallback</li>
+                  <li><span class="mono">out</span>FastAPI → web app</li>
+                </ol>
+              </aside>
             </div>
+
+            <footer class="case-foot">
+              <ul class="tags">
+                <li>PyTorch</li><li>EfficientNet-B4</li><li>Qwen2.5-3B</li><li>QLoRA · PEFT · TRL</li><li>FastAPI</li><li>Vite</li><li>Docker</li><li>HF Hub</li><li>W&amp;B</li>
+              </ul>
+              <div class="case-links">
+                <a class="btn btn-lime" href="https://github.com/ShubhamHaraniya/crop-disease-advisor" target="_blank" rel="noopener" data-cursor="Open">
+                  <span>View on GitHub</span>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 11.5 11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a class="btn btn-line-dark" href="https://crop-disease-advisor.onrender.com/" target="_blank" rel="noopener" data-cursor="Open">
+                  <span>Live demo</span>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 11.5 11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a class="btn btn-line-dark" href="https://huggingface.co/spaces/spidey1807/crop-disease-advisor" target="_blank" rel="noopener" data-cursor="Open">
+                  <span>HF Space</span>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 11.5 11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </footer>
+          </article>
+
+          <!-- 03 — Persona-Modeling -->
+          <article id="persona" class="case" aria-labelledby="persona-title">
+            <div class="case-rule" data-line></div>
+            <header class="case-head">
+              <span class="case-num" data-parallax="40" aria-hidden="true">03</span>
+              <div>
+                <p class="case-kicker mono">LLM fine-tuning · QLoRA · Serverless GPU</p>
+                <h3 id="persona-title" class="case-title">Sherlock Persona Model<em>Persona-Modeling</em></h3>
+              </div>
+            </header>
+
+            <div class="case-grid">
+              <dl class="case-copy">
+                <div class="reveal"><dt class="mono">Problem</dt><dd>A general-purpose chat model answers in a general-purpose voice. I wanted one that consistently reasons and speaks like Sherlock Holmes — deductive, Victorian — without paying for a full fine-tune.</dd></div>
+                <div class="reveal"><dt class="mono">Solution</dt><dd>QLoRA on Qwen2.5-7B-Instruct. The base model is loaded in 4-bit NF4 (about 14 GB down to 5 GB, per the README) with frozen weights, and LoRA adapters (r = 64, α = 16, on q_proj and v_proj) are trained with TRL’s SFTTrainer on chat-formatted Holmes dialogue.</dd></div>
+                <div class="reveal"><dt class="mono">What I built</dt><dd>The whole lifecycle: a data-preparation step that turns the corpus into chat-format JSONL, training, a base-versus-fine-tuned evaluation suite, loss and metric plots, a Modal backend on a serverless A100 that scales to zero, and a Streamlit chat UI with a dark detective theme.</dd></div>
+                <div class="reveal"><dt class="mono">Limits</dt><dd>Evaluation is perplexity and sentence-embedding similarity on held-out Holmes dialogue. Both measure style fit; neither is a human or task-based judgement of the persona.</dd></div>
+              </dl>
+
+              <aside class="case-panel" data-tilt aria-label="Persona-Modeling: results and pipeline">
+                <p class="panel-label mono">Base → fine-tuned</p>
+                <ul class="metrics metrics-2">
+                  <li><span class="m-num"><b data-count="45.31" data-decimals="2">45.31</b><i aria-hidden="true">→</i><b data-count="7.52" data-decimals="2">7.52</b></span><span class="m-cap mono">Perplexity · ~6× lower</span></li>
+                  <li><span class="m-num"><b data-count="0.096" data-decimals="3">0.096</b><i aria-hidden="true">→</i><b data-count="0.259" data-decimals="3">0.259</b></span><span class="m-cap mono">Cosine similarity</span></li>
+                </ul>
+                <p class="panel-label mono">Pipeline</p>
+                <ol class="flow">
+                  <li><span class="mono">data</span>Corpus → chat-format JSONL</li>
+                  <li><span class="mono">quant</span>Qwen2.5-7B · 4-bit NF4</li>
+                  <li><span class="mono">tune</span>LoRA r = 64 · SFTTrainer</li>
+                  <li><span class="mono">eval</span>Perplexity + cosine similarity</li>
+                  <li><span class="mono">serve</span>Modal A100 → Streamlit chat</li>
+                </ol>
+              </aside>
+            </div>
+
+            <footer class="case-foot">
+              <ul class="tags">
+                <li>Qwen2.5-7B</li><li>QLoRA</li><li>PEFT · TRL</li><li>bitsandbytes</li><li>Modal</li><li>Streamlit</li>
+              </ul>
+              <div class="case-links">
+                <a class="btn btn-lime" href="https://github.com/ShubhamHaraniya/Persona-Modeling" target="_blank" rel="noopener" data-cursor="Open">
+                  <span>View on GitHub</span>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 11.5 11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </footer>
+          </article>
+
+          <!-- 04 — Multimodal Price Estimator -->
+          <article id="price" class="case case-compact" aria-labelledby="price-title">
+            <div class="case-rule" data-line></div>
+            <header class="case-head">
+              <span class="case-num" data-parallax="40" aria-hidden="true">04</span>
+              <div>
+                <p class="case-kicker mono">Deep learning · Amazon ML project · Oct 2025</p>
+                <h3 id="price-title" class="case-title">Multimodal Price Estimator<em>CoCa + SigLIP ensemble</em></h3>
+              </div>
+            </header>
+
+            <div class="case-grid">
+              <dl class="case-copy">
+                <div class="reveal"><dt class="mono">Problem</dt><dd>Predict a product’s price from its multimodal content, with an error measure (sMAPE) that treats cheap and expensive items fairly — and fast enough to be usable at inference time.</dd></div>
+                <div class="reveal"><dt class="mono">Solution</dt><dd>An ensemble of parallel MLPs trained on CoCa and SigLIP multimodal embeddings, designed for low-latency inference.</dd></div>
+              </dl>
+
+              <aside class="case-panel" data-tilt aria-label="Multimodal Price Estimator: results">
+                <p class="panel-label mono">Results</p>
+                <ul class="metrics">
+                  <li><span class="m-num"><b data-count="40.06" data-decimals="2">40.06</b><small>%</small></span><span class="m-cap mono">sMAPE · lower is better</span></li>
+                  <li><span class="m-num"><b data-count="0.12" data-decimals="2">0.12</b><small>s</small></span><span class="m-cap mono">Inference / sample</span></li>
+                </ul>
+              </aside>
+            </div>
+
+            <footer class="case-foot">
+              <ul class="tags">
+                <li>PyTorch</li><li>CoCa</li><li>SigLIP</li><li>CLIP</li><li>Ensemble learning</li>
+              </ul>
+              <div class="case-links">
+                <a class="btn btn-lime" href="https://github.com/ShubhamHaraniya/Multimodal-Price-Estimator" target="_blank" rel="noopener" data-cursor="Open">
+                  <span>View on GitHub</span>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 11.5 11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </footer>
+          </article>
+
+          <!-- Also built -->
+          <div class="more">
+            <div class="case-rule" data-line></div>
+            <h3 class="more-title mono">Also built</h3>
+            <ul class="more-list">
+              <li class="reveal">
+                <div>
+                  <h4>EfficientUNet — lightweight segmentation</h4>
+                  <p>21-class semantic segmentation on PASCAL VOC 2012 with depthwise-separable convolutions: 0.64M parameters and 0.079 GFLOPs (about 4× smaller than a baseline UNet), 69.47% Dice clean and 59.67% under sensor-noise corruption. AMP training, a combined Dice + cross-entropy loss, and a pytest suite. <span class="mono note">Feb – Mar 2026 · detailed on my resume</span></p>
+                </div>
+              </li>
+              <li class="reveal">
+                <div>
+                  <h4>Phishing-Site-Detector</h4>
+                  <p>A Python tool that flags potentially malicious websites by scanning URLs for suspicious indicators, with a saved model and dataset in the repository.</p>
+                </div>
+                <a class="more-link" href="https://github.com/ShubhamHaraniya/Phishing-Site-Detector" target="_blank" rel="noopener" data-cursor="Open">GitHub ↗</a>
+              </li>
+            </ul>
+            <p class="more-all reveal"><a href="https://github.com/ShubhamHaraniya?tab=repositories" target="_blank" rel="noopener" class="link-arrow">All repositories <span aria-hidden="true">↗</span></a></p>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Achievements & Certifications Section -->
-    <section class="section achievements" id="achievements">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Recognition & Growth</span>
-                <h2 class="section-title">Achievements & Certifications</h2>
-            </div>
+      <!-- ═══════════ SKILLS ═══════════ -->
+      <section id="skills" class="skills section" aria-labelledby="skills-title">
+        <div class="wrap skills-grid">
+          <div class="section-head sticky-head">
+            <p class="eyebrow mono"><span>03</span> Skills &amp; stack</p>
+            <h2 id="skills-title" class="display" data-split>The toolkit,<br>by <em>layer.</em></h2>
+            <p class="section-lede reveal">Everything here appears on my resume or in the repositories above.</p>
+          </div>
 
-            <div class="achievements-grid">
-                <!-- Achievement -->
-                <div class="achievement-card glass-card featured">
-                    <div class="achievement-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <span class="achievement-label">Achievement</span>
-                        <h3 class="achievement-title">GATE DA 2025 - AIR 121</h3>
-                        <p class="achievement-description">
-                            Secured <strong>All India Rank 121</strong> in GATE Data Science and Artificial Intelligence
-                            2025
-                            with a <strong>Gate Score of 780</strong>.
-                        </p>
-                        <span class="achievement-year">2025</span>
-                    </div>
-                </div>
-
-                <!-- Certification 1 -->
-                <div class="achievement-card glass-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <span class="achievement-label">Certification</span>
-                        <h3 class="achievement-title">Python Data Structures and Algorithms</h3>
-                        <p class="achievement-description">
-                            Comprehensive course covering advanced data structures, algorithm design, and
-                            problem-solving techniques in Python.
-                        </p>
-                        <span class="achievement-issuer">Udemy</span>
-                        <span class="achievement-year">2025</span>
-                    </div>
-                </div>
-
-                <!-- Certification 2 -->
-                <div class="achievement-card glass-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <div class="achievement-content">
-                        <span class="achievement-label">Certification</span>
-                        <h3 class="achievement-title">Machine Learning and Data Science</h3>
-                        <p class="achievement-description">
-                            In-depth training on machine learning algorithms, data preprocessing, model evaluation, and
-                            real-world applications.
-                        </p>
-                        <span class="achievement-issuer">Udemy</span>
-                        <span class="achievement-year">2023</span>
-                    </div>
-                </div>
-            </div>
+          <div class="skill-groups">
+            <section class="skill-group" aria-labelledby="sg1">
+              <h3 id="sg1"><span class="mono">01</span>AI / ML / Deep Learning</h3>
+              <ul class="tags tags-light">
+                <li>Machine Learning</li><li>Deep Learning</li><li>NLP</li><li>Transformers</li><li>CNNs</li><li>ViT</li><li>RNNs / LSTMs</li><li>Attention</li><li>Transfer Learning</li><li>Scikit-learn</li><li>XGBoost</li><li>LightGBM</li><li>Random Forest</li><li>Clustering</li><li>PCA</li><li>Anomaly Detection</li>
+              </ul>
+            </section>
+            <section class="skill-group" aria-labelledby="sg2">
+              <h3 id="sg2"><span class="mono">02</span>Generative AI / LLMs</h3>
+              <ul class="tags tags-light">
+                <li>LLMs · SLMs · VLMs</li><li>Hugging Face Transformers</li><li>Prompt Engineering</li><li>Pretraining</li><li>SFT</li><li>RLHF</li><li>DPO</li><li>PEFT</li><li>LoRA · QLoRA</li><li>TRL</li><li>Quantization</li><li>vLLM</li>
+              </ul>
+            </section>
+            <section class="skill-group" aria-labelledby="sg3">
+              <h3 id="sg3"><span class="mono">03</span>Agentic AI / RAG</h3>
+              <ul class="tags tags-light">
+                <li>RAG</li><li>Hybrid Retrieval</li><li>Reranking</li><li>GraphRAG</li><li>Agentic RAG</li><li>Embeddings</li><li>Vector Databases</li><li>LangChain</li><li>LangGraph</li><li>ReAct</li><li>Tool Calling</li><li>Multi-Agent Systems</li><li>MCP</li><li>Context Engineering</li><li>Agent Memory</li><li>AgentOps</li><li>Human-in-the-Loop</li>
+              </ul>
+            </section>
+            <section class="skill-group" aria-labelledby="sg4">
+              <h3 id="sg4"><span class="mono">04</span>Computer Vision</h3>
+              <ul class="tags tags-light">
+                <li>PyTorch</li><li>OpenCV</li><li>YOLO</li><li>R-CNNs</li><li>U-Net</li><li>ViT</li><li>Object Detection</li><li>Segmentation</li><li>Image Classification &amp; Captioning</li><li>Grad-CAM</li>
+              </ul>
+            </section>
+            <section class="skill-group" aria-labelledby="sg5">
+              <h3 id="sg5"><span class="mono">05</span>Evaluation &amp; Safety</h3>
+              <ul class="tags tags-light">
+                <li>Precision / Recall / F1</li><li>ROC-AUC</li><li>mAP</li><li>IoU</li><li>Error Analysis</li><li>SHAP</li><li>RAGAS</li><li>DeepEval</li><li>LangSmith</li><li>LLM Guardrails</li><li>Prompt-Injection Defense</li><li>Tracing &amp; Observability</li>
+              </ul>
+            </section>
+            <section class="skill-group" aria-labelledby="sg6">
+              <h3 id="sg6"><span class="mono">06</span>Programming &amp; Data</h3>
+              <ul class="tags tags-light">
+                <li>Python</li><li>SQL</li><li>Data Structures &amp; Algorithms</li><li>OOP</li><li>NumPy</li><li>Pandas</li><li>SciPy</li><li>EDA</li><li>Feature Engineering</li><li>Statistics &amp; Hypothesis Testing</li><li>Cross-Validation</li><li>Hyperparameter Tuning</li><li>Matplotlib</li><li>Seaborn</li><li>Selenium</li><li>BeautifulSoup</li>
+              </ul>
+            </section>
+            <section class="skill-group" aria-labelledby="sg7">
+              <h3 id="sg7"><span class="mono">07</span>Backend, Cloud &amp; MLOps</h3>
+              <ul class="tags tags-light">
+                <li>FastAPI</li><li>REST APIs</li><li>Docker</li><li>MLflow</li><li>Weights &amp; Biases</li><li>AWS</li><li>PostgreSQL</li><li>Git</li><li>Streamlit</li><li>Hugging Face Hub &amp; Spaces</li><li>Modal</li><li>Render</li><li>pytest</li>
+              </ul>
+            </section>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Experience Section -->
-    <section class="section experience" id="experience">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Professional Journey</span>
-                <h2 class="section-title">Work Experience</h2>
+      <!-- ═══════════ EXPERIENCE ═══════════ -->
+      <section id="experience" class="exp section" aria-labelledby="exp-title">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="eyebrow mono"><span>04</span> Experience &amp; education</p>
+            <h2 id="exp-title" class="display" data-split>Where I’ve<br><em>learned</em> and built.</h2>
+          </div>
+
+          <div class="timeline">
+            <div class="tl-block">
+              <h3 class="tl-label mono">Experience</h3>
+              <article class="tl-entry reveal">
+                <p class="tl-date mono">Jan 2025 – Jun 2025</p>
+                <div>
+                  <h4>Data Scientist Intern</h4>
+                  <p class="tl-org">IntelKit Solutions</p>
+                  <ul class="tl-points">
+                    <li>Built a deepfake-detection system with computer vision and deep learning to flag manipulated images and videos, covering preprocessing, feature extraction, model training and evaluation.</li>
+                    <li>Designed and deployed automated data-acquisition pipelines with Selenium and BeautifulSoup, cutting manual data-collection effort by over 70% for downstream NLP and ML workflows.</li>
+                  </ul>
+                </div>
+              </article>
             </div>
 
-            <div class="timeline">
-                <!-- Internship 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">Jan 2025 – May 2025</span>
-                        <h3 class="timeline-title">Data Scientist Intern</h3>
-                        <h4 class="timeline-subtitle">IntelKit Solutions</h4>
-                        <p class="timeline-description">
-                            Applied advanced data science techniques and machine learning models to solve complex
-                            business problems. Developed predictive models, performed data analysis, and contributed
-                            to production-grade ML pipelines.
-                        </p>
-                        <div class="timeline-tags">
-                            <span class="tag">Machine Learning</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Data Analysis</span>
-                        </div>
-                    </div>
+            <div class="tl-block">
+              <h3 class="tl-label mono">Education</h3>
+              <article class="tl-entry reveal">
+                <p class="tl-date mono">2025 – Present</p>
+                <div>
+                  <h4>M.Tech, Artificial Intelligence</h4>
+                  <p class="tl-org">Indian Institute of Technology, Jodhpur</p>
+                  <p class="tl-meta mono">CGPA 9.0</p>
                 </div>
-
-                <!-- Internship 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">Jun 2024 – Jul 2024</span>
-                        <h3 class="timeline-title">Data Analyst Intern</h3>
-                        <h4 class="timeline-subtitle">CSRBOX</h4>
-                        <p class="timeline-description">
-                            Focused on data cleaning, visualization, and deriving actionable insights from
-                            Corporate Social Responsibility (CSR) project data. Supported impact assessment
-                            and reporting through data-driven analysis.
-                        </p>
-                        <div class="timeline-tags">
-                            <span class="tag">Data Analysis</span>
-                            <span class="tag">Visualization</span>
-                            <span class="tag">Reporting</span>
-                        </div>
-                    </div>
+              </article>
+              <article class="tl-entry reveal">
+                <p class="tl-date mono">2021 – 2025</p>
+                <div>
+                  <h4>B.E., Computer Engineering</h4>
+                  <p class="tl-org">L.D. College of Engineering, Ahmedabad</p>
+                  <p class="tl-meta mono">CGPA 8.49</p>
                 </div>
-
-                <!-- Independent Projects -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">2022 – Present</span>
-                        <h3 class="timeline-title">Independent ML/AI Projects</h3>
-                        <h4 class="timeline-subtitle">Self-Directed Development</h4>
-                        <p class="timeline-description">
-                            Building production-grade ML projects, contributing to open-source, and continuously
-                            expanding expertise in cutting-edge AI technologies including LLMs and MLOps.
-                        </p>
-                        <div class="timeline-tags">
-                            <span class="tag">LLMs</span>
-                            <span class="tag">MLOps</span>
-                            <span class="tag">Deep Learning</span>
-                        </div>
-                    </div>
-                </div>
+              </article>
             </div>
+
+            <div class="tl-block">
+              <h3 class="tl-label mono">Achievements</h3>
+              <article class="tl-entry reveal">
+                <p class="tl-date mono">2025</p>
+                <div>
+                  <h4>GATE Data Science &amp; AI — All India Rank 121</h4>
+                  <p class="tl-meta mono">GATE score 780</p>
+                </div>
+              </article>
+              <article class="tl-entry reveal">
+                <p class="tl-date mono">2025</p>
+                <div>
+                  <h4>Amazon ML Challenge — Rank 11</h4>
+                  <p class="tl-meta mono">Among 82,000+ teams nationwide</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="tl-block">
+              <h3 class="tl-label mono">Certifications</h3>
+              <article class="tl-entry reveal">
+                <p class="tl-date mono">2025</p>
+                <div><h4>Python Data Structures and Algorithms</h4><p class="tl-org">Udemy</p></div>
+              </article>
+              <article class="tl-entry reveal">
+                <p class="tl-date mono">2023</p>
+                <div><h4>Machine Learning and Data Science</h4><p class="tl-org">Udemy</p></div>
+              </article>
+            </div>
+          </div>
+
+          <!-- Resume -->
+          <aside class="resume-band reveal" aria-labelledby="resume-title">
+            <div>
+              <p class="eyebrow mono">Resume</p>
+              <h3 id="resume-title" class="resume-title">Prefer the one-pager?</h3>
+              <p>Two editions, same facts — choose whichever fits the role.</p>
+            </div>
+            <div class="resume-actions">
+              <a class="resume-card" href="assets/resume/Shubham-Haraniya-Resume-DS.pdf" target="_blank" rel="noopener" data-cursor="PDF">
+                <span class="mono">PDF · Applied AI &amp; GenAI</span>
+                <strong>Resume — DS edition</strong>
+                <small>Includes the Crop Disease Advisor vision + LLM project</small>
+              </a>
+              <a class="resume-card" href="assets/resume/Shubham-Haraniya-Resume-CV.pdf" target="_blank" rel="noopener" data-cursor="PDF">
+                <span class="mono">PDF · Deep learning &amp; CV</span>
+                <strong>Resume — CV edition</strong>
+                <small>Includes EfficientUNet and a fuller skills list</small>
+              </a>
+            </div>
+          </aside>
         </div>
-    </section>
+      </section>
 
-    <!-- Education Section -->
-    <section class="section education" id="education">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Academic Background</span>
-                <h2 class="section-title">Education</h2>
+      <!-- ═══════════ CONTACT ═══════════ -->
+      <section id="contact" class="contact section section-dark" aria-labelledby="contact-title">
+        <div class="wrap">
+          <p class="eyebrow mono"><span>05</span> Contact</p>
+          <h2 id="contact-title" class="contact-title" data-split>Let’s build something<br>that <em>works.</em></h2>
+
+          <div class="contact-grid">
+            <div class="contact-main">
+              <p class="section-lede reveal">
+                I’m open to AI/ML engineering roles and research collaborations — LLM systems, RAG and agents, or computer vision. If you’re working on something in that space, I’d like to hear about it.
+              </p>
+
+              <div class="mail-row reveal">
+                <a class="mail-link" href="mailto:spharaniya18@gmail.com" data-cursor="Email">spharaniya18@gmail.com</a>
+                <button id="copy-mail" class="btn btn-lime btn-sm" type="button" data-email="spharaniya18@gmail.com">
+                  <span class="copy-text">Copy email</span>
+                </button>
+                <span id="copy-status" class="visually-hidden" role="status" aria-live="polite"></span>
+              </div>
+
+              <ul class="channels reveal-stagger">
+                <li><a href="https://www.linkedin.com/in/shubham-haraniya" target="_blank" rel="noopener" data-cursor="Open"><span class="mono">LinkedIn</span><b>in/shubham-haraniya</b><i aria-hidden="true">↗</i></a></li>
+                <li><a href="https://github.com/ShubhamHaraniya" target="_blank" rel="noopener" data-cursor="Open"><span class="mono">GitHub</span><b>ShubhamHaraniya</b><i aria-hidden="true">↗</i></a></li>
+                <li><a href="assets/resume/Shubham-Haraniya-Resume-DS.pdf" target="_blank" rel="noopener" data-cursor="PDF"><span class="mono">Resume</span><b>Download PDF</b><i aria-hidden="true">↓</i></a></li>
+              </ul>
             </div>
 
-            <div class="timeline">
-                <!-- M.Tech -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">2025 – 2027 (Expected)</span>
-                        <h3 class="timeline-title">Master of Technology (M.Tech)</h3>
-                        <h4 class="timeline-subtitle">IIT Jodhpur – Artificial Intelligence</h4>
-                        <p class="timeline-description">
-                            Advanced coursework in Machine Learning, Deep Learning, Natural Language Processing,
-                            and MLOps. Research focus on Generative AI and Large Language Models.
-                        </p>
-                        <div class="timeline-tags">
-                            <span class="tag">AI Specialization</span>
-                            <span class="tag">Research</span>
-                        </div>
-                    </div>
-                </div>
+            <form id="contact-form" class="contact-form reveal" action="https://api.web3forms.com/submit" method="POST" novalidate>
+              <p class="form-title mono">Or send a note</p>
+              <input type="hidden" name="access_key" value="47117e1d-1a78-40f6-a646-761313297d1a">
+              <input type="hidden" name="subject" value="New message from portfolio">
+              <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-                <!-- B.Tech -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="timeline-content glass-card">
-                        <span class="timeline-date">2021 – 2025</span>
-                        <h3 class="timeline-title">Bachelor of Technology (B.Tech)</h3>
-                        <h4 class="timeline-subtitle">L.D. College of Engineering – Computer Science</h4>
-                        <p class="timeline-description">
-                            Strong foundation in Computer Science fundamentals, Data Structures, Algorithms,
-                            and Software Engineering. Developed passion for AI and Machine Learning.
-                            Qualified GATE DA '25.
-                        </p>
-                        <div class="timeline-tags">
-                            <span class="tag">Computer Science</span>
-                            <span class="tag">GATE Qualified</span>
-                        </div>
-                    </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="cf-name">Name</label>
+                  <input id="cf-name" type="text" name="name" required autocomplete="name" placeholder="Your name">
                 </div>
-            </div>
+                <div class="field">
+                  <label for="cf-email">Email</label>
+                  <input id="cf-email" type="email" name="email" required autocomplete="email" placeholder="you@company.com">
+                </div>
+              </div>
+              <div class="field">
+                <label for="cf-message">Message</label>
+                <textarea id="cf-message" name="message" rows="4" required placeholder="What are you building?"></textarea>
+              </div>
+              <div class="form-foot">
+                <button type="submit" id="submit-btn" class="btn btn-lime">
+                  <span class="submit-text">Send message</span>
+                </button>
+                <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+          </div>
         </div>
-    </section>
+      </section>
+    </div><!-- /.sheet -->
+  </main>
 
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">Get In Touch</span>
-                <h2 class="section-title">Let's Connect</h2>
-            </div>
+  <!-- ═══════════ FOOTER (revealed beneath main on desktop) ═══════════ -->
+  <footer id="footer" class="footer">
+    <div class="wrap footer-inner">
+      <div class="footer-top">
+        <p class="mono">AI / ML Engineer · M.Tech AI, IIT Jodhpur</p>
+        <ul class="footer-links">
+          <li><a href="https://github.com/ShubhamHaraniya" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/shubham-haraniya" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="mailto:spharaniya18@gmail.com">Email</a></li>
+          <li><a href="#home" id="to-top">Back to top ↑</a></li>
+        </ul>
+      </div>
+      <p class="footer-name" aria-hidden="true"><span>Shubham</span> <span>Haraniya</span></p>
+      <p class="footer-copy mono">© 2026 Shubham Haraniya · Built with GSAP and Lenis</p>
+    </div>
+  </footer>
 
-            <div class="contact-content">
-                <div class="contact-info glass-card">
-                    <h3>Ready to collaborate?</h3>
-                    <p>
-                        I'm always interested in hearing about new opportunities, collaborations,
-                        or just having a chat about AI and technology. Feel free to reach out!
-                    </p>
+  <button id="btt" class="btt" type="button" aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 15V3M3.5 8.5 9 3l5.5 5.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
 
-                    <div class="contact-methods">
-                        <a href="mailto:spharaniya18@gmail.com" class="contact-method">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <span class="contact-label">Email</span>
-                                <span class="contact-value">spharaniya18@gmail.com</span>
-                            </div>
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/shubham-haraniya" target="_blank" rel="noopener noreferrer"
-                            class="contact-method">
-                            <div class="contact-icon">
-                                <i class="fab fa-linkedin-in"></i>
-                            </div>
-                            <div class="contact-details">
-                                <span class="contact-label">LinkedIn</span>
-                                <span class="contact-value">shubham-haraniya</span>
-                            </div>
-                        </a>
-
-                        <a href="https://github.com/ShubhamHaraniya" target="_blank" rel="noopener noreferrer"
-                            class="contact-method">
-                            <div class="contact-icon">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div class="contact-details">
-                                <span class="contact-label">GitHub</span>
-                                <span class="contact-value">ShubhamHaraniya</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <form class="contact-form glass-card" id="contact-form" action="https://api.web3forms.com/submit"
-                    method="POST">
-                    <!-- Web3Forms Access Key - FREE forever -->
-                    <input type="hidden" name="access_key" value="47117e1d-1a78-40f6-a646-761313297d1a">
-                    <input type="hidden" name="subject" value="New Contact from Portfolio Website">
-                    <input type="hidden" name="from_name" value="Portfolio Contact Form">
-
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" required placeholder=" ">
-                        <label for="name">Your Name</label>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" required placeholder=" ">
-                        <label for="email">Your Email</label>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" required placeholder=" ">
-                        <label for="subject">Subject</label>
-                    </div>
-
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
-                        <label for="message">Your Message</label>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary btn-full">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span class="logo-text">Shubham Haraniya</span>
-                </div>
-                <p class="footer-text">
-                    Designed & Built by Shubham Haraniya
-                </p>
-                <div class="footer-social">
-                    <a href="https://github.com/ShubhamHaraniya" target="_blank" rel="noopener noreferrer"
-                        aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/shubham-haraniya" target="_blank" rel="noopener noreferrer"
-                        aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="mailto:spharaniya18@gmail.com" aria-label="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-                <p class="footer-copyright">
-                    &copy; 2026 Shubham Haraniya. All rights reserved.
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Back to Top -->
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Scripts -->
-    <script src="js/three-scene.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/main.js"></script>
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
-
 </html>
