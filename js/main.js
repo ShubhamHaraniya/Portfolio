@@ -1,411 +1,629 @@
 /**
- * Main JavaScript
- * Core functionality for navigation, loader, and interactions
+ * Shubham Haraniya — portfolio
+ * Motion system: GSAP + ScrollTrigger + Lenis (all self-hosted in js/vendor).
+ *
+ * Principles
+ *  - Content is visible by default; motion is layered on only when GSAP loaded and
+ *    the visitor hasn't asked for reduced motion.
+ *  - One language: masked rises for type, soft fades for blocks, scrubbed progress for
+ *    "reading" effects, springy-but-short hovers for controls.
+ *  - Everything non-decorative (theme, menu, nav, copy-email, form) works without GSAP.
  */
+(() => {
+  'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize all modules
-    initCustomCursor();
-    initTypingAnimation();
-    initLoader();
-    initNavigation();
-    initSmoothScroll();
-    initBackToTop();
-    initContactForm();
-    initActiveNavLink();
-});
+  const root = document.documentElement;
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 
-/**
- * Typing Animation - Cycles through roles
- */
-function initTypingAnimation() {
-    const typingText = document.getElementById('typing-text');
-    if (!typingText) return;
+  const reduce = root.classList.contains('reduce') || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const isDesktop = () => window.matchMedia('(min-width: 900px)').matches;
+  const hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+  const animate = hasGsap && !reduce;
 
-    const roles = ['ML Engineer', 'AI Engineer', 'Data Scientist'];
-    let roleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* storage unavailable */ } },
+    sget(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } },
+    sset(k, v) { try { sessionStorage.setItem(k, v); } catch (e) { /* storage unavailable */ } },
+  };
 
-    function type() {
-        const currentRole = roles[roleIndex];
+  let lenis = null;
+  let resolveReady;
+  const ready = new Promise((res) => { resolveReady = res; });
 
-        if (isDeleting) {
-            // Remove characters
-            typingText.textContent = currentRole.substring(0, charIndex - 1);
-            charIndex--;
-            typingSpeed = 50;
-        } else {
-            // Add characters
-            typingText.textContent = currentRole.substring(0, charIndex + 1);
-            charIndex++;
-            typingSpeed = 100;
-        }
+  /* If GSAP failed to load, fall back to a fully static (but complete) page. */
+  if (!hasGsap) {
+    root.classList.remove('js');
+    root.classList.add('no-loader');
+  }
 
-        // Check if word is complete
-        if (!isDeleting && charIndex === currentRole.length) {
-            // Pause at end of word
-            typingSpeed = 2000;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            // Move to next word
-            isDeleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-            typingSpeed = 500;
-        }
+  /* ──────────────────────────────────────────
+     Theme
+  ────────────────────────────────────────── */
+  function initTheme() {
+    const btn = $('#theme-toggle');
+    const meta = $('meta[name="theme-color"]');
+    const apply = (t) => {
+      root.setAttribute('data-theme', t);
+      if (meta) meta.setAttribute('content', t === 'dark' ? '#0F1114' : '#F5F3EE');
+      if (btn) {
+        btn.setAttribute('aria-pressed', String(t === 'dark'));
+        btn.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+      }
+    };
+    apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      apply(next);
+      store.set('portfolio-theme', next);
+    });
+  }
 
-        setTimeout(type, typingSpeed);
+  /* ──────────────────────────────────────────
+     Scrolling (Lenis) + anchors
+  ────────────────────────────────────────── */
+  function initScroll() {
+    if (animate) {
+      lenis = new window.Lenis({ lerp: 0.1, smoothWheel: true, wheelMultiplier: 1 });
+      lenis.on('scroll', window.ScrollTrigger.update);
+      window.gsap.ticker.add((t) => lenis.raf(t * 1000));
+      window.gsap.ticker.lagSmoothing(0);
     }
 
-    // Start typing after a short delay
-    setTimeout(type, 1000);
-}
-
-/**
- * Custom Animated Cursor - Gradient with Trail
- */
-function initCustomCursor() {
-    const cursorDot = document.getElementById('cursor-dot');
-
-    if (!cursorDot) return;
-
-    // Check if it's a touch device
-    if ('ontouchstart' in window) return;
-
-    let mouseX = 0, mouseY = 0;
-    let lastTrailTime = 0;
-
-    // Track mouse position & create trail
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        // Dot follows immediately
-        cursorDot.style.left = mouseX + 'px';
-        cursorDot.style.top = mouseY + 'px';
-
-        // Create trail marks (throttled)
-        const now = Date.now();
-        if (now - lastTrailTime > 40) {
-            createTrailMark(mouseX, mouseY);
-            lastTrailTime = now;
-        }
-    });
-
-    // Create trail mark
-    function createTrailMark(x, y) {
-        const trail = document.createElement('div');
-        trail.className = 'cursor-trail';
-        trail.style.left = x + 'px';
-        trail.style.top = y + 'px';
-        document.body.appendChild(trail);
-
-        // Remove after animation completes
-        setTimeout(() => trail.remove(), 800);
+    function goTo(hash) {
+      if (hash === '#home' || hash === '#' || hash === '') {
+        lenis ? lenis.scrollTo(0, { duration: 1.4 }) : window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+        return;
+      }
+      const target = $(hash);
+      if (!target) return;
+      /* Lenis honours the html scroll-padding-top (header height + gap), same as native scrollIntoView */
+      if (lenis) lenis.scrollTo(target, { duration: 1.5, easing: (t) => 1 - Math.pow(1 - t, 4) });
+      else target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
     }
 
-    // Hover effects for interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .btn, .nav-link, .project-card, .skill-card, input, textarea');
-
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursorDot.classList.add('hover');
-        });
-
-        el.addEventListener('mouseleave', () => {
-            cursorDot.classList.remove('hover');
-        });
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const hash = a.getAttribute('href');
+      if (hash.length > 1 && !$(hash)) return;
+      e.preventDefault();
+      closeMenu();
+      goTo(hash);
+      try { history.replaceState(null, '', hash === '#home' ? location.pathname + location.search : hash); } catch (err) { /* file:// etc. */ }
     });
 
-    // Hide cursor when it leaves the window
-    document.addEventListener('mouseleave', () => {
-        cursorDot.style.opacity = '0';
-    });
+    /* Keyboard users tabbing into the (visually hidden-behind-main) footer */
+    const footer = $('#footer');
+    if (footer) {
+      footer.addEventListener('focusin', () => {
+        if (!isDesktop()) return;
+        lenis ? lenis.scrollTo('bottom', { immediate: true }) : window.scrollTo(0, document.documentElement.scrollHeight);
+      });
+    }
+  }
 
-    document.addEventListener('mouseenter', () => {
-        cursorDot.style.opacity = '1';
-    });
-}
+  /* ──────────────────────────────────────────
+     Header: scrolled state, active section, progress
+  ────────────────────────────────────────── */
+  function initHeader() {
+    const bar = $('#topbar');
+    let scrolled = false;
+    const onScroll = () => {
+      const s = window.scrollY > 8;
+      if (s !== scrolled) { scrolled = s; bar.classList.toggle('is-scrolled', s); }
+      const btt = $('#btt');
+      if (btt) btt.classList.toggle('is-visible', window.scrollY > 900);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
-/**
- * Loader
- */
-function initLoader() {
-    const loader = document.getElementById('loader');
-
-    // Hide loader after page loads
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            loader.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }, 500);
-    });
-
-    // Fallback: hide loader after 3 seconds
-    setTimeout(() => {
-        if (!loader.classList.contains('hidden')) {
-            loader.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-    }, 3000);
-}
-
-/**
- * Navigation
- */
-function initNavigation() {
-    const navbar = document.getElementById('navbar');
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    // Mobile menu toggle
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+    const links = $$('.nav a[data-nav]');
+    const ids = links.map((l) => l.dataset.nav);
+    const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          links.forEach((l) => {
+            const on = l.dataset.nav === en.target.id;
+            l.classList.toggle('is-active', on);
+            if (on) l.setAttribute('aria-current', 'true'); else l.removeAttribute('aria-current');
+          });
         });
-
-        // Close menu when clicking a link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
-                navToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            }
-        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      sections.forEach((s) => io.observe(s));
     }
 
-    // Navbar scroll effect (fallback if GSAP not loaded)
-    if (typeof gsap === 'undefined') {
-        let lastScroll = 0;
+    if (animate) {
+      window.gsap.to('#progress span', {
+        scaleX: 1, ease: 'none',
+        scrollTrigger: { start: 0, end: 'max', scrub: 0.25 },
+      });
+    }
 
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
+    const btt = $('#btt');
+    if (btt) btt.addEventListener('click', () => (lenis ? lenis.scrollTo(0, { duration: 1.4 }) : window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' })));
+  }
 
-            if (currentScroll > 80) {
-                navbar.classList.add('scrolled');
+  /* ──────────────────────────────────────────
+     Mobile menu
+  ────────────────────────────────────────── */
+  const menu = $('#menu');
+  const menuBtn = $('#menu-btn');
+  let menuOpen = false;
+  function setMenu(open) {
+    if (!menu || !menuBtn || open === menuOpen) return;
+    menuOpen = open;
+    menu.classList.toggle('is-open', open);
+    menu.inert = !open;
+    document.body.classList.toggle('menu-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    $('.menu-btn-label', menuBtn).textContent = open ? 'Close' : 'Menu';
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (lenis) open ? lenis.stop() : lenis.start();
+    if (open) { const first = $('a', menu); if (first) setTimeout(() => first.focus({ preventScroll: true }), 250); }
+    else menuBtn.focus({ preventScroll: true });
+  }
+  function closeMenu() { setMenu(false); }
+  function initMenu() {
+    if (!menu || !menuBtn) return;
+    menuBtn.addEventListener('click', () => setMenu(!menuOpen));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menuOpen) setMenu(false); });
+    window.matchMedia('(min-width: 900px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
+    /* simple focus trap */
+    menu.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const f = $$('a, button', menu).filter((n) => !n.disabled);
+      const all = [menuBtn, ...f];
+      const i = all.indexOf(document.activeElement);
+      if (e.shiftKey && i <= 0) { e.preventDefault(); all[all.length - 1].focus(); }
+      else if (!e.shiftKey && i === all.length - 1) { e.preventDefault(); all[0].focus(); }
+    });
+  }
+
+  /* ──────────────────────────────────────────
+     Text splitting
+  ────────────────────────────────────────── */
+  function splitWords(el, mask) {
+    const label = el.textContent.replace(/\s+/g, ' ').trim();
+    const walk = (node) => {
+      Array.from(node.childNodes).forEach((n) => {
+        if (n.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          n.textContent.split(/(\s+)/).forEach((p) => {
+            if (!p) return;
+            if (/^\s+$/.test(p)) { frag.append(' '); return; }
+            const w = document.createElement('span');
+            w.setAttribute('aria-hidden', 'true');
+            if (mask) {
+              w.className = 'w';
+              const i = document.createElement('span');
+              i.className = 'wi';
+              i.textContent = p;
+              w.append(i);
             } else {
-                navbar.classList.remove('scrolled');
+              w.className = 'sw';
+              w.textContent = p;
             }
-
-            lastScroll = currentScroll;
-        });
-    }
-}
-
-/**
- * Smooth Scroll
- */
-function initSmoothScroll() {
-    const links = document.querySelectorAll('a[href^="#"]');
-
-    links.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
-
-            if (href === '#') return;
-
-            const target = document.querySelector(href);
-
-            if (target) {
-                e.preventDefault();
-
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
-/**
- * Back to Top Button
- */
-function initBackToTop() {
-    const backToTop = document.getElementById('back-to-top');
-
-    if (!backToTop) return;
-
-    // Show/hide button based on scroll position
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 500) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
+            frag.append(w);
+          });
+          n.replaceWith(frag);
+        } else if (n.nodeType === 1 && n.tagName !== 'BR') {
+          walk(n);
         }
+      });
+    };
+    walk(el);
+    el.setAttribute('aria-label', label);
+    return mask ? $$('.wi', el) : $$('.sw', el);
+  }
+
+  /* ──────────────────────────────────────────
+     Loader → intro
+  ────────────────────────────────────────── */
+  function runLoader() {
+    const loader = $('#loader');
+    const skip = root.classList.contains('no-loader') || !animate || !loader;
+    if (skip) { resolveReady(); return; }
+
+    const gsap = window.gsap;
+    const num = $('#loader-num');
+    const bar = $('#loader-bar');
+    const o = { v: 0 };
+    document.body.style.overflow = 'hidden';
+    if (lenis) lenis.stop();
+
+    let finished = false;
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      loader.style.display = 'none';
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+      if (lenis && !menuOpen) lenis.start();
+      store.sset('sh-loaded', '1');
+    };
+
+    gsap.timeline()
+      .to(o, {
+        v: 100, duration: 1.25, ease: 'power2.inOut',
+        onUpdate: () => { num.textContent = String(Math.round(o.v)); bar.style.transform = 'scaleX(' + o.v / 100 + ')'; },
+      })
+      .to(loader, { yPercent: -100, duration: 0.95, ease: 'power4.inOut', onComplete: finish }, '+=0.15')
+      .add(resolveReady, '-=0.5');
+
+    setTimeout(() => { finish(); resolveReady(); }, 5000); // failsafe
+  }
+
+  /* ──────────────────────────────────────────
+     Hero
+  ────────────────────────────────────────── */
+  function initHero() {
+    const hero = $('#home');
+    const sheet = $('.sheet');
+    if (!hero || !sheet) return;
+
+    const syncSticky = () => {
+      const fits = hero.offsetHeight <= window.innerHeight + 2;
+      hero.classList.toggle('is-sticky', fits && isDesktop());
+    };
+    syncSticky();
+
+    if (!animate) return;
+    const gsap = window.gsap;
+
+    const lines = $$('.hero-title .line-inner', hero);
+    const fades = $$('[data-hero-fade]', hero);
+    const edges = $$('.g-edges path', hero);
+    const nodes = $$('.g-node, .g-core', hero);
+    const hl = $('.hl', hero);
+
+    gsap.set(lines, { yPercent: 112, visibility: 'visible' });
+    gsap.set(fades, { opacity: 0, y: 24 });
+    gsap.set(edges, { strokeDashoffset: 1 });
+    gsap.set(nodes, { opacity: 0 });
+    if (hl) gsap.set(hl, { '--hl': 0 });
+
+    ready.then(() => {
+      gsap.timeline({ defaults: { ease: 'expo.out' } })
+        .to(lines, { yPercent: 0, duration: 1.35, stagger: 0.09 }, 0)
+        .to(hl, { '--hl': 1, duration: 1, ease: 'power3.out' }, 0.55)
+        .to(fades, { opacity: 1, y: 0, duration: 1, stagger: 0.1 }, 0.5)
+        .to(edges, { strokeDashoffset: 0, duration: 1.4, stagger: 0.12, ease: 'power2.inOut' }, 0.3)
+        .to(nodes, { opacity: 1, duration: 0.8, stagger: 0.07, ease: 'power2.out' }, 0.2);
     });
 
-    // Scroll to top on click
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    /* Hero recedes as the sheet slides over it */
+    gsap.matchMedia().add('(min-width: 900px)', () => {
+        if (!hero.classList.contains('is-sticky')) return;
+        gsap.to('.hero-inner', {
+          y: -60, scale: 0.965, opacity: 0.3, transformOrigin: '50% 0%', ease: 'none',
+          scrollTrigger: { trigger: sheet, start: 'top bottom', end: 'top top', scrub: true },
+        });
+        gsap.to('.hero-graph', {
+          y: -50, ease: 'none',
+          scrollTrigger: { trigger: sheet, start: 'top bottom', end: 'top top', scrub: true },
         });
     });
-}
 
-/**
- * Contact Form - Web3Forms Integration
- */
-function initContactForm() {
-    const form = document.getElementById('contact-form');
+    let t;
+    window.addEventListener('resize', () => {
+      clearTimeout(t);
+      t = setTimeout(() => { syncSticky(); window.ScrollTrigger.refresh(); }, 200);
+    });
+  }
 
+  /* ──────────────────────────────────────────
+     Scroll-driven reveals
+  ────────────────────────────────────────── */
+  function initReveals() {
+    if (!animate) return;
+    const gsap = window.gsap;
+    const ST = window.ScrollTrigger;
+
+    /* Headings: masked word rise */
+    $$('[data-split]').forEach((el) => {
+      const words = splitWords(el, true);
+      gsap.set(words, { yPercent: 115 });
+      ST.create({
+        trigger: el, start: 'top 88%', once: true,
+        onEnter: () => gsap.to(words, { yPercent: 0, duration: 1.1, ease: 'expo.out', stagger: 0.045 }),
+      });
+    });
+
+    /* Manifesto: words light up as you read */
+    $$('[data-scrub-words]').forEach((el) => {
+      const words = splitWords(el, false);
+      gsap.set(words, { opacity: 0.16 });
+      gsap.to(words, {
+        opacity: 1, ease: 'none', stagger: 0.12,
+        scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 58%', scrub: true },
+      });
+    });
+
+    /* Blocks: soft fade-rise, batched so siblings cascade */
+    ST.batch('.reveal, .reveal-stagger > *', {
+      start: 'top 91%', once: true,
+      onEnter: (batch) => gsap.to(batch, { opacity: 1, y: 0, duration: 0.95, ease: 'power3.out', stagger: 0.09, overwrite: true }),
+    });
+
+    /* Divider rules draw in */
+    $$('[data-line]').forEach((el) => {
+      gsap.fromTo(el, { scaleX: 0 }, {
+        scaleX: 1, duration: 1.5, ease: 'expo.out',
+        scrollTrigger: { trigger: el, start: 'top 94%', once: true },
+      });
+    });
+
+    /* Case-study pipelines: line draws, steps cascade */
+    $$('.case-panel').forEach((panel) => {
+      const flow = $('.flow', panel);
+      if (!flow) return;
+      const steps = $$('li', flow);
+      gsap.set(flow, { '--flow': 0 });
+      gsap.set(steps, { opacity: 0, x: -14 });
+      ST.create({
+        trigger: panel, start: 'top 78%', once: true,
+        onEnter: () => {
+          gsap.to(flow, { '--flow': 1, duration: 1.4, ease: 'power2.inOut' });
+          gsap.to(steps, { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out', stagger: 0.14, delay: 0.1 });
+        },
+      });
+    });
+
+    /* Skill tags */
+    $$('.tags').forEach((ul) => {
+      const tags = $$('li', ul);
+      gsap.set(tags, { opacity: 0, y: 14 });
+      ST.create({
+        trigger: ul, start: 'top 92%', once: true,
+        onEnter: () => gsap.to(tags, {
+          opacity: 1, y: 0, duration: 0.7, ease: 'power3.out', stagger: { each: 0.018, from: 'start' },
+          onComplete: () => gsap.set(tags, { clearProps: 'opacity,transform' }),
+        }),
+      });
+    });
+
+    /* Big outlined numerals drift against the scroll (desktop only) */
+    gsap.matchMedia().add('(min-width: 900px)', () => {
+        $$('[data-parallax]').forEach((el) => {
+          const d = parseFloat(el.dataset.parallax) || 40;
+          gsap.fromTo(el, { y: d }, {
+            y: -d, ease: 'none',
+            scrollTrigger: { trigger: el.closest('.case'), start: 'top bottom', end: 'bottom top', scrub: true },
+          });
+        });
+    });
+  }
+
+  /* ──────────────────────────────────────────
+     Counters (verified numbers only)
+  ────────────────────────────────────────── */
+  function initCounters() {
+    const els = $$('[data-count]');
+    if (!els.length) return;
+    if (!animate) return; // static final values already in the markup
+
+    const gsap = window.gsap;
+    els.forEach((el) => {
+      const end = parseFloat(el.dataset.count);
+      const dec = parseInt(el.dataset.decimals || '0', 10);
+      const fmt = (v) => v.toFixed(dec);
+      el.textContent = fmt(0);
+      const o = { v: 0 };
+      const run = (delay) => gsap.to(o, {
+        v: end, duration: 1.8, ease: 'power3.out', delay,
+        onUpdate: () => { el.textContent = fmt(o.v); },
+        onComplete: () => { el.textContent = fmt(end); },
+      });
+      if (el.closest('#home')) {
+        /* hero stats sit at the fold: start them with the intro rather than waiting for a scroll */
+        ready.then(() => run(0.9));
+      } else {
+        window.ScrollTrigger.create({ trigger: el, start: 'top 92%', once: true, onEnter: () => run(0.1) });
+      }
+    });
+  }
+
+  /* ──────────────────────────────────────────
+     Pointer-driven details (desktop, fine pointer, motion allowed)
+  ────────────────────────────────────────── */
+  function initPointer() {
+    if (!animate || !finePointer) return;
+    const gsap = window.gsap;
+
+    /* Cursor ring + contextual label */
+    const ring = $('#cursor-ring');
+    const label = $('#cursor-label');
+    if (ring && label) {
+      document.body.classList.add('cursor-on');
+      const rx = gsap.quickTo(ring, 'x', { duration: 0.35, ease: 'power3' });
+      const ry = gsap.quickTo(ring, 'y', { duration: 0.35, ease: 'power3' });
+      const lx = gsap.quickTo(label, 'x', { duration: 0.2, ease: 'power3' });
+      const ly = gsap.quickTo(label, 'y', { duration: 0.2, ease: 'power3' });
+      window.addEventListener('pointermove', (e) => {
+        document.body.classList.add('cursor-visible');
+        rx(e.clientX); ry(e.clientY); lx(e.clientX); ly(e.clientY);
+      }, { passive: true });
+      document.addEventListener('pointerleave', () => document.body.classList.remove('cursor-visible'));
+      document.addEventListener('pointerover', (e) => {
+        const t = e.target.closest ? e.target : e.target.parentElement;
+        if (!t) return;
+        const hot = t.closest('a, button, input, textarea, label, [role="button"]');
+        document.body.classList.toggle('cursor-hover', !!hot);
+        const c = t.closest('[data-cursor]');
+        if (c) { label.textContent = c.dataset.cursor; document.body.classList.add('cursor-labelled'); }
+        else document.body.classList.remove('cursor-labelled');
+      });
+    }
+
+    /* Magnetic buttons */
+    $$('.btn-magnetic').forEach((el) => {
+      const mx = gsap.quickTo(el, 'x', { duration: 0.5, ease: 'power3' });
+      const my = gsap.quickTo(el, 'y', { duration: 0.5, ease: 'power3' });
+      el.addEventListener('pointermove', (e) => {
+        const r = el.getBoundingClientRect();
+        mx((e.clientX - (r.left + r.width / 2)) * 0.22);
+        my((e.clientY - (r.top + r.height / 2)) * 0.32);
+      });
+      el.addEventListener('pointerleave', () => { mx(0); my(0); });
+    });
+
+    /* Depth/tilt on project panels */
+    if (isDesktop()) {
+      $$('[data-tilt]').forEach((panel) => {
+        gsap.set(panel, { transformPerspective: 1000 });
+        const rX = gsap.quickTo(panel, 'rotationX', { duration: 0.7, ease: 'power3' });
+        const rY = gsap.quickTo(panel, 'rotationY', { duration: 0.7, ease: 'power3' });
+        panel.addEventListener('pointermove', (e) => {
+          const r = panel.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width - 0.5;
+          const py = (e.clientY - r.top) / r.height - 0.5;
+          rX(-py * 5); rY(px * 7);
+        });
+        panel.addEventListener('pointerleave', () => { rX(0); rY(0); });
+      });
+    }
+  }
+
+  /* ──────────────────────────────────────────
+     Footer reveal
+  ────────────────────────────────────────── */
+  function initFooter() {
+    const footer = $('#footer');
+    const main = $('#main');
+    if (!footer || !main) return;
+
+    const setH = () => root.style.setProperty('--footer-h', isDesktop() ? footer.offsetHeight + 'px' : '0px');
+    setH();
+    if ('ResizeObserver' in window) new ResizeObserver(() => { setH(); if (hasGsap) window.ScrollTrigger.refresh(); }).observe(footer);
+    window.addEventListener('resize', setH);
+
+    if (!animate) return;
+    const gsap = window.gsap;
+    const words = $$('.footer-name span', footer);
+
+    const mm = gsap.matchMedia();
+    mm.add('(min-width: 900px)', () => {
+        gsap.fromTo(words, { yPercent: 105 }, {
+          yPercent: 0, ease: 'none', stagger: 0.12,
+          scrollTrigger: {
+            trigger: main, scrub: true,
+            start: 'bottom bottom',
+            end: () => 'bottom bottom-=' + Math.max(footer.offsetHeight * 0.85, 1),
+          },
+        });
+    });
+    mm.add('(max-width: 899px)', () => {
+        gsap.from(words, {
+          yPercent: 100, duration: 1, ease: 'expo.out', stagger: 0.1,
+          scrollTrigger: { trigger: footer, start: 'top 90%', once: true },
+        });
+    });
+  }
+
+  /* ──────────────────────────────────────────
+     Contact: copy email + form
+  ────────────────────────────────────────── */
+  function initContact() {
+    const copyBtn = $('#copy-mail');
+    const status = $('#copy-status');
+    if (copyBtn) {
+      const txt = $('.copy-text', copyBtn);
+      let timer;
+      const done = (ok) => {
+        txt.textContent = ok ? 'Copied ✓' : 'Copy failed';
+        if (status) status.textContent = ok ? 'Email address copied to clipboard' : 'Could not copy automatically; the address is shown beside this button';
+        clearTimeout(timer);
+        timer = setTimeout(() => { txt.textContent = 'Copy email'; }, 2200);
+      };
+      copyBtn.addEventListener('click', async () => {
+        const email = copyBtn.dataset.email;
+        try {
+          await navigator.clipboard.writeText(email);
+          done(true);
+        } catch (err) {
+          try {
+            const ta = document.createElement('textarea');
+            ta.value = email; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            const ok = document.execCommand('copy');
+            ta.remove();
+            done(ok);
+          } catch (e2) { done(false); }
+        }
+      });
+    }
+
+    const form = $('#contact-form');
     if (!form) return;
+    const btn = $('#submit-btn');
+    const label = $('.submit-text', btn);
+    const out = $('#form-status');
+    const say = (msg, kind) => { out.textContent = msg; out.className = 'form-status' + (kind ? ' ' + kind : ''); };
 
     form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+      e.preventDefault();
+      const fields = $$('input[required], textarea[required]', form);
+      let bad = null;
+      fields.forEach((f) => { const ok = f.checkValidity() && f.value.trim() !== ''; f.classList.toggle('invalid', !ok); if (!ok && !bad) bad = f; });
+      if (bad) { say('Please fill in your name, a valid email and a message.', 'err'); bad.focus(); return; }
 
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-
-        // Show loading state
-        submitBtn.innerHTML = '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
-        submitBtn.disabled = true;
-
-        try {
-            const formData = new FormData(form);
-            const response = await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                showNotification('Message sent successfully! I\'ll get back to you soon.');
-                form.reset();
-            } else {
-                showNotification('Oops! Something went wrong. Please try again.');
-            }
-        } catch (error) {
-            showNotification('Network error. Please check your connection.');
+      btn.disabled = true;
+      const orig = label.textContent;
+      label.textContent = 'Sending…';
+      say('');
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data && data.success) {
+          say('Thanks — your message was sent.', 'ok');
+          form.reset();
+        } else {
+          say('The message could not be sent. Please email me directly at spharaniya18@gmail.com.', 'err');
         }
-
-        // Reset button
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
+      } catch (err) {
+        say('Network error — please email me directly at spharaniya18@gmail.com.', 'err');
+      }
+      btn.disabled = false;
+      label.textContent = orig;
     });
-}
+    $$('input, textarea', form).forEach((f) => f.addEventListener('input', () => f.classList.remove('invalid')));
+  }
 
-/**
- * Active Navigation Link
- */
-function initActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+  /* ──────────────────────────────────────────
+     Boot
+  ────────────────────────────────────────── */
+  function boot() {
+    if (hasGsap) window.gsap.registerPlugin(window.ScrollTrigger);
+    initTheme();
+    initMenu();
+    initScroll();
+    initHeader();
+    initHero();
+    initReveals();
+    initCounters();
+    initPointer();
+    initFooter();
+    initContact();
+    runLoader();
 
-    function updateActiveLink() {
-        const scrollPosition = window.scrollY + 100;
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
+    if (hasGsap) {
+      const refresh = () => window.ScrollTrigger.refresh();
+      window.addEventListener('load', refresh);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
     }
 
-    window.addEventListener('scroll', updateActiveLink);
-    updateActiveLink(); // Run on load
-}
-
-/**
- * Simple Notification
- */
-function showNotification(message) {
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
-        color: white;
-        padding: 16px 32px;
-        border-radius: 50px;
-        font-size: 14px;
-        font-weight: 500;
-        z-index: 10000;
-        animation: slideUp 0.3s ease;
-        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-    `;
-
-    // Add animation keyframes
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateX(-50%) translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-        }
-    `;
-    document.head.appendChild(style);
-
-    document.body.appendChild(notification);
-
-    // Remove after 3 seconds
+    /* Safety net: never leave content hidden if something above misbehaves */
     setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transform = 'translateX(-50%) translateY(20px)';
-        notification.style.transition = 'all 0.3s ease';
+      const hidden = $$('.reveal, .reveal-stagger > *').filter((n) => getComputedStyle(n).opacity === '0' && n.getBoundingClientRect().top < window.innerHeight);
+      if (hidden.length > 6) root.classList.add('force-show');
+    }, 9000);
+  }
 
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    }, 3000);
-}
-
-/**
- * Utility: Throttle function
- */
-function throttle(func, limit) {
-    let inThrottle;
-    return function (...args) {
-        if (!inThrottle) {
-            func.apply(this, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
-
-/**
- * Utility: Debounce function
- */
-function debounce(func, wait) {
-    let timeout;
-    return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-}
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
+})();
