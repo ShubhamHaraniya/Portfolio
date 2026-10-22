@@ -3,24 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shubham Haraniya — AI/ML Engineer building end-to-end intelligent systems</title>
+  <title>Shubham Haraniya — AI/ML Engineer · LLMs, Vision, MLOps</title>
   <meta name="description" content="Shubham Haraniya is an M.Tech AI student at IIT Jodhpur building end-to-end ML and GenAI systems: LLM fine-tuning, RAG and agents, computer vision, and deployment. GATE DA 2025 AIR 121.">
   <meta name="author" content="Shubham Haraniya">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#F5F3EE">
+  <link rel="canonical" href="https://shubhamharaniya.github.io/Portfolio/">
 
-  <!-- Social sharing -->
+  <!-- Social sharing (absolute URLs: crawlers resolve these outside the page) -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shubham Haraniya">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:url" content="https://shubhamharaniya.github.io/Portfolio/">
   <meta property="og:title" content="Shubham Haraniya — AI/ML Engineer">
   <meta property="og:description" content="End-to-end ML and GenAI systems: LLM fine-tuning, RAG and agents, computer vision, and deployment. M.Tech AI, IIT Jodhpur.">
-  <meta property="og:image" content="assets/og-image.png">
+  <meta property="og:image" content="https://shubhamharaniya.github.io/Portfolio/assets/og-image.png">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Shubham Haraniya — Engineering intelligence. Building AI that works.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Shubham Haraniya — AI/ML Engineer">
   <meta name="twitter:description" content="End-to-end ML and GenAI systems: LLM fine-tuning, RAG and agents, computer vision, and deployment.">
-  <meta name="twitter:image" content="assets/og-image.png">
+  <meta name="twitter:image" content="https://shubhamharaniya.github.io/Portfolio/assets/og-image.png">
+  <meta name="twitter:image:alt" content="Shubham Haraniya — Engineering intelligence. Building AI that works.">
 
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/svg+xml" href="assets/brand/monogram.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/icons/favicon-64.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
 
   <!-- Self-hosted variable fonts -->
   <link rel="preload" href="assets/fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -37,24 +48,42 @@
         if (t === 'dark' || t === 'light') d.setAttribute('data-theme', t);
         if (sessionStorage.getItem('sh-loaded')) d.classList.add('no-loader');
       } catch (e) {}
-      if (d.classList.contains('reduce')) d.classList.add('no-loader');
+      /* no intro loader for reduced motion or on phones/tablets (it only delays first content there) */
+      if (d.classList.contains('reduce') || window.matchMedia('(max-width: 899px)').matches) d.classList.add('no-loader');
     })();
   </script>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=4">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Shubham Haraniya",
-    "jobTitle": "AI/ML Engineer",
-    "alumniOf": [
-      { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology, Jodhpur" },
-      { "@type": "CollegeOrUniversity", "name": "L.D. College of Engineering, Ahmedabad" }
-    ],
-    "sameAs": [
-      "https://github.com/ShubhamHaraniya",
-      "https://www.linkedin.com/in/shubham-haraniya"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://shubhamharaniya.github.io/Portfolio/#website",
+        "url": "https://shubhamharaniya.github.io/Portfolio/",
+        "name": "Shubham Haraniya — Portfolio",
+        "inLanguage": "en",
+        "author": { "@id": "https://shubhamharaniya.github.io/Portfolio/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://shubhamharaniya.github.io/Portfolio/#person",
+        "name": "Shubham Haraniya",
+        "url": "https://shubhamharaniya.github.io/Portfolio/",
+        "image": "https://shubhamharaniya.github.io/Portfolio/assets/og-image.png",
+        "jobTitle": "AI/ML Engineer",
+        "description": "M.Tech AI student at IIT Jodhpur building end-to-end ML and GenAI systems.",
+        "knowsAbout": ["Machine learning", "Deep learning", "Large language models", "LLM fine-tuning", "Retrieval-augmented generation", "Computer vision", "MLOps"],
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology, Jodhpur" },
+          { "@type": "CollegeOrUniversity", "name": "L.D. College of Engineering, Ahmedabad" }
+        ],
+        "sameAs": [
+          "https://github.com/ShubhamHaraniya",
+          "https://www.linkedin.com/in/shubham-haraniya"
+        ]
+      }
     ]
   }
   </script>
@@ -82,7 +111,7 @@
   <!-- ─────────── HEADER ─────────── -->
   <header id="topbar" class="topbar">
     <a href="#home" class="brand" aria-label="Shubham Haraniya — home">
-      <span class="brand-mark" aria-hidden="true">SH</span>
+      <img class="brand-mark" src="assets/brand/monogram.svg" alt="" width="36" height="36">
       <span class="brand-name">Shubham Haraniya</span>
     </a>
 
@@ -102,7 +131,7 @@
         <svg class="ico-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         <svg class="ico-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
-      <a href="assets/resume/Shubham-Haraniya-Resume-DS.pdf" class="btn btn-lime btn-sm topbar-resume" target="_blank" rel="noopener">
+      <a href="#resume" class="btn btn-lime btn-sm topbar-resume">
         <span>Resume</span>
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5l4-4M3 14h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -126,7 +155,7 @@
       </ol>
     </nav>
     <div class="menu-foot">
-      <a class="btn btn-lime" href="assets/resume/Shubham-Haraniya-Resume-DS.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+      <a class="btn btn-lime" href="#resume">Resume (PDF)</a>
       <a class="menu-mail mono" href="mailto:spharaniya18@gmail.com">spharaniya18@gmail.com</a>
     </div>
   </div>
@@ -143,72 +172,120 @@
           <span>Open to roles &amp; collaborations</span>
         </div>
 
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <h1 id="hero-title" class="hero-title">
-              <span class="line"><span class="line-inner">Engineering</span></span>
-              <span class="line"><span class="line-inner">intelligence.</span></span>
-              <span class="line"><span class="line-inner">Building <mark class="hl"><span>AI</span></mark></span></span>
-              <span class="line"><span class="line-inner">that works.</span></span>
-            </h1>
+        <div class="hero-name">
+          <h1 id="hero-title" class="nm">
+            <span class="visually-hidden">Shubham Haraniya</span>
+            <span class="nm-line" aria-hidden="true"><span class="nm-l">S</span><span class="nm-l">H</span><span class="nm-l">U</span><span class="nm-l">B</span><span class="nm-l">H</span><span class="nm-l">A</span><span class="nm-l">M</span></span>
+            <span class="nm-line" aria-hidden="true"><span class="nm-l">H</span><span class="nm-l">A</span><span class="nm-l">R</span><span class="nm-l">A</span><span class="nm-l">N</span><span class="nm-l">I</span><span class="nm-l nm-y">Y</span><span class="nm-l">A</span></span>
+          </h1>
+          <svg class="nm-fx" viewBox="0 0 620 195" aria-hidden="true" focusable="false">
+            <!-- accent stroke under the name; 1 unit = 1% of the name's font size -->
+            <path class="ul ul-d" pathLength="1" d="M6,177 H402"/>
+            <path class="ul ul-m" pathLength="1" d="M6,177 H446"/>
+            <g class="nm-net">
+              <path class="ul" pathLength="1" d="M402,177 C444,177 462,162 462,126"/>
+              <g class="edges">
+                <path class="ln" pathLength="1" d="M452,40 L462,40"/>
+                <path class="ln" pathLength="1" d="M462,40 L524,18"/>
+                <path class="ln" pathLength="1" d="M462,40 L524,84"/>
+                <path class="ln" pathLength="1" d="M462,126 L524,84"/>
+                <path class="ln" pathLength="1" d="M462,126 L524,142"/>
+                <path class="ln" pathLength="1" d="M524,18 L594,98"/>
+                <path class="ln" pathLength="1" d="M524,84 L594,98"/>
+                <path class="ln" pathLength="1" d="M524,142 L594,98"/>
+              </g>
+              <circle class="nd" cx="462" cy="40" r="4.5"/>
+              <circle class="nd" cx="462" cy="126" r="4.5"/>
+              <circle class="nd" cx="524" cy="18" r="5.5"/>
+              <circle class="nd" cx="524" cy="84" r="5.5"/>
+              <circle class="nd" cx="524" cy="142" r="5.5"/>
+              <circle class="pulse" cx="594" cy="98" r="9"/>
+              <circle class="pulse p2" cx="594" cy="98" r="9"/>
+              <circle class="nd-l" cx="594" cy="98" r="9"/>
+            </g>
+          </svg>
+        </div>
 
-            <p class="hero-lede" data-hero-fade>
-              I’m Shubham, an AI/ML engineer who ships whole systems — from the model and its
-              evaluation to the API, container and deployment that put it in front of users.
-              LLM fine-tuning, retrieval and agents, and computer vision.
+        <div class="hero-band">
+          <div class="hero-band-main">
+            <p class="hero-headline" id="hero-headline">
+              <span class="line"><span class="line-inner">Engineering intelligence.</span></span>
+              <span class="line"><span class="line-inner">Building <mark class="hl"><span>AI</span></mark> that works.</span></span>
             </p>
-
             <div class="hero-cta" data-hero-fade>
               <a href="#projects" class="btn btn-lime btn-magnetic" data-cursor="Scroll">
-                <span>Explore my work</span>
+                <span>Explore projects</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2.5v11M3.5 9 8 13.5 12.5 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
-              <a href="assets/resume/Shubham-Haraniya-Resume-DS.pdf" class="btn btn-line btn-magnetic" target="_blank" rel="noopener">
-                <span>View resume</span>
+              <a href="https://github.com/ShubhamHaraniya" class="btn btn-line btn-magnetic" target="_blank" rel="noopener">
+                <span>GitHub</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 11.5 11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
               <a href="https://www.linkedin.com/in/shubham-haraniya" class="btn btn-line btn-magnetic" target="_blank" rel="noopener">
-                <span>Connect on LinkedIn</span>
+                <span>LinkedIn</span>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2.5 11.5 11.5 2.5M11.5 2.5H5M11.5 2.5V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="#resume" class="btn btn-line btn-magnetic">
+                <span>Resume</span>
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5l4-4M3 14h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </div>
           </div>
-
-          <!-- Illustrative agentic-RAG loop -->
-          <figure class="hero-graph" aria-hidden="true">
-            <svg viewBox="0 0 560 560" role="img" focusable="false" class="graph">
-              <circle class="g-ring" cx="280" cy="280" r="236"/>
-              <circle class="g-ring g-ring-2" cx="280" cy="280" r="168"/>
-
-              <g class="g-edges" fill="none">
-                <path id="gp1" pathLength="1" d="M158,118 Q285,58 392,106"/>
-                <path id="gp2" pathLength="1" d="M440,132 Q500,200 486,268"/>
-                <path id="gp3" pathLength="1" d="M440,300 Q380,300 326,288"/>
-                <path id="gp4" pathLength="1" d="M300,324 Q330,410 392,444"/>
-                <path id="gp5" pathLength="1" d="M258,324 Q214,400 178,440"/>
-                <path id="gp6" pathLength="1" d="M236,280 Q170,284 118,290"/>
-              </g>
-
-              <g class="g-packets">
-                <circle r="4.5" class="pk"><animateMotion dur="3.6s" repeatCount="indefinite" begin="0s"><mpath href="#gp1"/></animateMotion></circle>
-                <circle r="4.5" class="pk"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0.9s"><mpath href="#gp2"/></animateMotion></circle>
-                <circle r="4.5" class="pk"><animateMotion dur="3.0s" repeatCount="indefinite" begin="1.8s"><mpath href="#gp3"/></animateMotion></circle>
-                <circle r="4.5" class="pk pk-b"><animateMotion dur="3.4s" repeatCount="indefinite" begin="0.4s"><mpath href="#gp4"/></animateMotion></circle>
-                <circle r="4.5" class="pk pk-b"><animateMotion dur="3.4s" repeatCount="indefinite" begin="1.5s"><mpath href="#gp6"/></animateMotion></circle>
-              </g>
-
-              <g class="g-nodes">
-                <g class="g-node" transform="translate(120 120)"><rect x="-50" y="-18" width="100" height="36" rx="18"/><text y="4.5">Query</text></g>
-                <g class="g-node" transform="translate(440 112)"><rect x="-54" y="-18" width="108" height="36" rx="18"/><text y="4.5">Retriever</text></g>
-                <g class="g-node" transform="translate(486 290)"><rect x="-54" y="-18" width="108" height="36" rx="18"/><text y="4.5">Reranker</text></g>
-                <g class="g-node" transform="translate(410 462)"><rect x="-46" y="-18" width="92" height="36" rx="18"/><text y="4.5">Tools</text></g>
-                <g class="g-node" transform="translate(150 462)"><rect x="-50" y="-18" width="100" height="36" rx="18"/><text y="4.5">Memory</text></g>
-                <g class="g-node" transform="translate(76 292)"><rect x="-42" y="-18" width="84" height="36" rx="18"/><text y="4.5">Eval</text></g>
-                <g class="g-core" transform="translate(280 280)"><circle class="core-pulse" r="52"/><circle class="core" r="46"/><text y="5">LLM</text></g>
-              </g>
-            </svg>
-            <figcaption class="mono">Illustrative · an agentic RAG loop</figcaption>
-          </figure>
+          <p class="hero-lede" data-hero-fade>
+            I’m an AI/ML engineer who ships whole systems — from the model and its
+            evaluation to the API, container and deployment that put it in front of users.
+            LLM fine-tuning, retrieval and agents, and computer vision.
+          </p>
         </div>
+
+          <!-- Lifecycle workflow (hover / focus / tap a stage) -->
+          <figure class="wf" aria-labelledby="wf-cap">
+            <ol class="wf-list" id="wf-list">
+              <li class="wf-step is-on">
+                <button type="button" class="wf-node" aria-expanded="true" aria-controls="wf-d0">
+                  <span class="wf-idx mono" aria-hidden="true">01</span>
+                  <span class="wf-name mono">Data</span>
+                  <span class="wf-short">Collect, clean, split</span>
+                </button>
+              </li>
+              <li class="wf-step">
+                <button type="button" class="wf-node" aria-expanded="false" aria-controls="wf-d1">
+                  <span class="wf-idx mono" aria-hidden="true">02</span>
+                  <span class="wf-name mono">Model</span>
+                  <span class="wf-short">Train or fine-tune</span>
+                </button>
+              </li>
+              <li class="wf-step">
+                <button type="button" class="wf-node" aria-expanded="false" aria-controls="wf-d2">
+                  <span class="wf-idx mono" aria-hidden="true">03</span>
+                  <span class="wf-name mono">Evaluation</span>
+                  <span class="wf-short">Held-out, with error analysis</span>
+                </button>
+              </li>
+              <li class="wf-step">
+                <button type="button" class="wf-node" aria-expanded="false" aria-controls="wf-d3">
+                  <span class="wf-idx mono" aria-hidden="true">04</span>
+                  <span class="wf-name mono">API</span>
+                  <span class="wf-short">Typed, validated endpoints</span>
+                </button>
+              </li>
+              <li class="wf-step">
+                <button type="button" class="wf-node" aria-expanded="false" aria-controls="wf-d4">
+                  <span class="wf-idx mono" aria-hidden="true">05</span>
+                  <span class="wf-name mono">Deployment</span>
+                  <span class="wf-short">Container, CI, hosted demo</span>
+                </button>
+              </li>
+            </ol>
+            <div class="wf-details">
+                <p class="wf-detail is-on" id="wf-d0">Datasets, labels and a fixed split before any model exists. <em>Seen in:</em> DeepFakeFace (~120K images, seeded 80/10/10 split); an instruction set for crop advice.</p>
+                <p class="wf-detail" id="wf-d1">Architecture and training recipe, tracked as experiments. <em>Seen in:</em> a dual-stream spatial + frequency CNN; QLoRA on Qwen2.5 (3B and 7B).</p>
+                <p class="wf-detail" id="wf-d2">Metrics on data the model never trained on, plus where it fails. <em>Seen in:</em> F1, AUC, EER and a confusion matrix; BERTScore and perplexity for the LLM stages.</p>
+                <p class="wf-detail" id="wf-d3">A service contract instead of a notebook. <em>Seen in:</em> FastAPI <code>/predict</code>, <code>/health</code>, <code>/classes</code>; schema-validated JSON from the LLM with a fallback.</p>
+                <p class="wf-detail" id="wf-d4">Reproducible builds and a place to try it. <em>Seen in:</em> multi-stage Docker, GitHub Actions tests, Hugging Face Space; a Modal serverless A100 for the persona model.</p>
+            </div>
+            <figcaption id="wf-cap" class="mono">The lifecycle I build for each project · select a stage</figcaption>
+          </figure>
 
         <ul class="hero-stats" data-hero-fade>
           <li>
@@ -309,7 +386,9 @@
                 <div class="reveal"><dt class="mono">Problem</dt><dd>Faces can now be faked by inpainting, identity swaps or text-to-image models. A detector has to catch all of them — and a bare REAL/FAKE label gives a reviewer nothing to check.</dd></div>
                 <div class="reveal"><dt class="mono">Solution</dt><dd>A dual-stream network. A spatial stream (EfficientNet-B5 with SE channel attention and ADD spatial attention) reads manipulation cues in pixels; a frequency stream runs the image’s FFT magnitude spectrum through a small CNN. A learnable, sigmoid-gated <em>FrequencyGate</em> fuses the two before classification, and Grad-CAM shows which regions drove the call.</dd></div>
                 <div class="reveal"><dt class="mono">What I built</dt><dd>The full pipeline: model, focal loss (γ = 2) with weighted sampling for the roughly 3:1 fake-to-real imbalance, FP16 mixed-precision training with cosine schedule and early stopping on validation AUC, evaluation scripts, CLI inference that emits a JSON report, and a Streamlit app serving Grad-CAM localisation.</dd></div>
-                <div class="reveal"><dt class="mono">Limits</dt><dd>Results come from one benchmark (DeepFakeFace, an ~80/10/10 split of ~120K images). No cross-dataset evaluation is reported, so read the numbers as in-distribution.</dd></div>
+                <div class="reveal"><dt class="mono">Decisions</dt><dd>Focal loss and weighted sampling instead of plain cross-entropy, because fakes outnumber reals about 3:1. Early stopping on validation AUC rather than loss: the run keeps the epoch-13 checkpoint (of 23), after validation loss had flattened while training loss kept falling.</dd></div>
+                <div class="reveal"><dt class="mono">Reading the results</dt><dd>The test split is 9,000 fakes and 3,000 reals, so a model that says “fake” every time would already score 75% accuracy. That is why specificity (94.2%), EER (5.46%) and AUC are shown beside accuracy. The model misses 473 of 9,000 fakes and flags 175 of 3,000 real faces.</dd></div>
+                <div class="reveal"><dt class="mono">Limits</dt><dd>Results come from one benchmark (DeepFakeFace, an ~80/10/10 split of ~120K images). No cross-dataset evaluation is reported, so read the numbers as in-distribution. Validation accuracy plateaus around 93–95% while training accuracy keeps climbing, a mild overfit.</dd></div>
               </dl>
 
               <aside class="case-panel" data-tilt aria-label="Deepfake Forensics: results and pipeline">
@@ -328,6 +407,44 @@
                 </ol>
               </aside>
             </div>
+
+            <div class="case-figs" data-tabs>
+              <p class="figs-label mono" id="df-figs-label">Evidence from the repository</p>
+              <div class="tabs" role="tablist" aria-labelledby="df-figs-label">
+                <button type="button" role="tab" id="df-tab-1" aria-controls="df-pan-1" aria-selected="true">Training curves</button>
+                <button type="button" role="tab" id="df-tab-2" aria-controls="df-pan-2" aria-selected="false" tabindex="-1">ROC curve</button>
+                <button type="button" role="tab" id="df-tab-3" aria-controls="df-pan-3" aria-selected="false" tabindex="-1">Confusion matrix</button>
+              </div>
+              <div class="tabpanel" role="tabpanel" id="df-pan-1" aria-labelledby="df-tab-1">
+                <figure class="fig">
+                  <div class="fig-media"><img src="assets/img/deepfake-training-curves.webp" width="2084" height="1475" loading="lazy" decoding="async" alt="Four line charts over 23 training epochs. Loss: training falls from about 0.51 to 0.36, validation hovers between 0.39 and 0.42. Accuracy: training rises to about 0.97, validation sits between 0.93 and 0.95. Validation AUC peaks at 0.9894 at epoch 13, marked with a dashed line. Learning rate decays on a cosine schedule from 1e-4."></div>
+                  <figcaption><strong>Loss, accuracy, validation AUC and learning rate over 23 epochs.</strong> Training accuracy keeps rising while validation accuracy plateaus, and validation AUC peaks at epoch 13 (0.9894). The plot title carries the repository’s run label.</figcaption>
+                </figure>
+              </div>
+              <div class="tabpanel" role="tabpanel" id="df-pan-2" aria-labelledby="df-tab-2">
+                <figure class="fig fig-sq">
+                  <div class="fig-media fig-media-sq"><img src="assets/img/deepfake-roc-curve.webp" width="1052" height="817" loading="lazy" decoding="async" alt="ROC curve on the 12,000-image test set. The curve rises almost vertically to a true-positive rate near 0.9 at a false-positive rate under 0.05, then flattens near 1.0. Legend reads AUC = 0.989. A dashed diagonal marks chance."></div>
+                  <figcaption><strong>ROC curve on the 12,000-image test set, AUC 0.989.</strong> The dashed diagonal is chance. This is in-distribution performance on a single benchmark, not a robustness claim. The plot title shows the config key “faceforensics”; the data is DeepFakeFace.</figcaption>
+                </figure>
+              </div>
+              <div class="tabpanel" role="tabpanel" id="df-pan-3" aria-labelledby="df-tab-3">
+                <figure class="fig fig-sq">
+                  <div class="fig-media fig-media-sq"><img src="assets/img/deepfake-confusion-matrix.webp" width="989" height="881" loading="lazy" decoding="async" alt="Row-normalised confusion matrix. Real images: 0.94 predicted real, 0.06 predicted fake. Fake images: 0.05 predicted real, 0.95 predicted fake."></div>
+                  <figcaption><strong>Row-normalised confusion matrix.</strong> 94% of real faces and 95% of fakes are classified correctly. In counts: 8,527 true positives, 2,825 true negatives, 175 false positives and 473 false negatives.</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <details class="tech">
+              <summary><span>Technical details</span><i aria-hidden="true"></i></summary>
+              <dl class="spec">
+                <div><dt class="mono">Dataset</dt><dd>OpenRL/DeepFakeFace, ~120K images: real faces from the “wiki” subset, fakes from inpainting, InsightFace swaps and a text-to-image generator. 80/10/10 split, seed 42.</dd></div>
+                <div><dt class="mono">Input</dt><dd>256 × 256 face crops. The frequency stream takes the FFT magnitude spectrum of the same image.</dd></div>
+                <div><dt class="mono">Training</dt><dd>AdamW, lr 1e-4, weight decay 0.05; cosine schedule with 3 warm-up epochs; batch size 16; FP16 mixed precision; focal loss γ = 2; early-stopping patience 10. 23 epochs were run.</dd></div>
+                <div><dt class="mono">Test metrics</dt><dd>12,000 images. Accuracy 94.6% · F1 96.34% · AUC 98.95% · precision 97.99% · recall 94.74% · specificity 94.17% · EER 5.46% · average precision 99.65%.</dd></div>
+                <div><dt class="mono">Serving</dt><dd>CLI inference that writes a JSON report; Streamlit app that overlays Grad-CAM on the face.</dd></div>
+              </dl>
+            </details>
 
             <footer class="case-foot">
               <ul class="tags">
@@ -358,11 +475,12 @@
                 <div class="reveal"><dt class="mono">Problem</dt><dd>A farmer photographing a sick leaf needs more than a class label. They need a plan — what to treat it with, how much yield is at risk, and what suits their region and season.</dd></div>
                 <div class="reveal"><dt class="mono">Solution</dt><dd>Two stages. An EfficientNet-B4 classifier identifies the disease across 38 classes (14 crops, PlantVillage). Its output feeds a Qwen2.5-3B model, QLoRA-tuned to return a structured JSON plan with organic and chemical options, yield impact and region-season advice. If the JSON fails to parse, the advisor retries at a lower temperature, then falls back to a curated lookup table.</dd></div>
                 <div class="reveal"><dt class="mono">What I built</dt><dd>Both models, the instruction dataset (diseases × regions × seasons × farmer profiles), a FastAPI service with a Vite front end and multi-stage Docker build, W&amp;B experiment tracking, model releases on the Hugging Face Hub, a pytest suite covering the API, model forward pass and output schema, and deployments on Render and Hugging Face Spaces.</dd></div>
+                <div class="reveal"><dt class="mono">Decisions</dt><dd>The language model’s output is never trusted raw: it must parse into a fixed JSON schema, otherwise the request retries at a lower temperature and finally falls back to a curated lookup table. The result is a response that is always well-formed. CI runs black, flake8 and CPU tests; the deploy workflow tests first and only then pushes to the Hugging Face Space.</dd></div>
                 <div class="reveal"><dt class="mono">Limits</dt><dd>The LLM stage needs a GPU, so the CPU deployment serves the lookup fallback. Coverage is 38 classes, and the advice is model-generated decision support, not agronomic guidance. The tests use mocked weights, so they check structure rather than accuracy.</dd></div>
               </dl>
 
               <aside class="case-panel" data-tilt aria-label="Crop Disease Advisor: results and pipeline">
-                <p class="panel-label mono">Evaluation</p>
+                <p class="panel-label mono">Evaluation · README results table</p>
                 <ul class="metrics">
                   <li><span class="m-num"><b data-count="96.8" data-decimals="1">96.8</b><small>%</small></span><span class="m-cap mono">Accuracy · 38 classes</span></li>
                   <li><span class="m-num"><b data-count="97.1" data-decimals="1">97.1</b><small>%</small></span><span class="m-cap mono">AUC</span></li>
@@ -378,6 +496,17 @@
                 </ol>
               </aside>
             </div>
+
+            <details class="tech">
+              <summary><span>Technical details</span><i aria-hidden="true"></i></summary>
+              <dl class="spec">
+                <div><dt class="mono">Classifier</dt><dd>EfficientNet-B4, 38 classes across 14 crops (PlantVillage), 224 × 224 input. Reported: accuracy 96.8%, macro-F1 95.4%, AUC 97.1%.</dd></div>
+                <div><dt class="mono">Language model</dt><dd>Qwen2.5-3B, QLoRA with rank 16 on a 4-bit NF4 base. Reported: BERTScore F1 81.68%, perplexity 1.42, 100% JSON/schema validity.</dd></div>
+                <div><dt class="mono">Service</dt><dd>FastAPI with <code>/predict</code>, <code>/health</code> and <code>/classes</code>; Vite front end; multi-stage Docker build.</dd></div>
+                <div><dt class="mono">Two modes</dt><dd>Phase 1 serves the curated lookup advice. Phase 2 adds the LLM advisor when a GPU is available.</dd></div>
+                <div><dt class="mono">Tests</dt><dd>pytest on the API, the model forward pass and the output schema, using mocked weights: they check structure, not accuracy.</dd></div>
+              </dl>
+            </details>
 
             <footer class="case-foot">
               <ul class="tags">
@@ -416,6 +545,8 @@
                 <div class="reveal"><dt class="mono">Problem</dt><dd>A general-purpose chat model answers in a general-purpose voice. I wanted one that consistently reasons and speaks like Sherlock Holmes — deductive, Victorian — without paying for a full fine-tune.</dd></div>
                 <div class="reveal"><dt class="mono">Solution</dt><dd>QLoRA on Qwen2.5-7B-Instruct. The base model is loaded in 4-bit NF4 (about 14 GB down to 5 GB, per the README) with frozen weights, and LoRA adapters (r = 64, α = 16, on q_proj and v_proj) are trained with TRL’s SFTTrainer on chat-formatted Holmes dialogue.</dd></div>
                 <div class="reveal"><dt class="mono">What I built</dt><dd>The whole lifecycle: a data-preparation step that turns the corpus into chat-format JSONL, training, a base-versus-fine-tuned evaluation suite, loss and metric plots, a Modal backend on a serverless A100 that scales to zero, and a Streamlit chat UI with a dark detective theme.</dd></div>
+                <div class="reveal"><dt class="mono">Decisions</dt><dd>QLoRA rather than a full fine-tune: the 7B base sits frozen in 4-bit while only small adapters on the attention query and value projections are trained. Serving on Modal means the A100 scales to zero when nobody is chatting, at the cost of a cold start on the first message.</dd></div>
+                <div class="reveal"><dt class="mono">Reading the results</dt><dd>Perplexity falls from 45.31 to 7.52 on held-out Holmes dialogue. Cosine similarity to reference replies rises from 0.096 to 0.259, a clear gain over the base model that is still low in absolute terms.</dd></div>
                 <div class="reveal"><dt class="mono">Limits</dt><dd>Evaluation is perplexity and sentence-embedding similarity on held-out Holmes dialogue. Both measure style fit; neither is a human or task-based judgement of the persona.</dd></div>
               </dl>
 
@@ -435,6 +566,24 @@
                 </ol>
               </aside>
             </div>
+
+            <div class="case-figs">
+              <p class="figs-label mono" id="pm-figs-label">Evidence from the repository</p>
+              <figure class="fig fig-dark" aria-labelledby="pm-figs-label pm-fig-cap">
+                <div class="fig-media fig-media-chart" tabindex="0" role="group" aria-label="Training loss chart (scrolls sideways on narrow screens)"><img src="assets/img/persona-training-loss.svg" width="640" height="300" loading="lazy" decoding="async" alt="Line chart of training loss across 2,480 steps. Loss falls from 2.44 at step 10 to about 1.7 by step 20 and stays near 1.6 through the first epoch. It then steps down at each of the two epoch boundaries, to about 1.45 and then about 1.1, and ends at 1.06 at step 2,480."></div>
+                <figcaption id="pm-fig-cap"><strong>Training loss, logged every 10 steps over 2,480 steps (about three epochs).</strong> Redrawn from the repository’s <code>training_loss.json</code>; nothing smoothed. The drops at the dashed epoch lines are what repeated passes over a small corpus look like, so this curve is a sanity check on training, not evidence of quality. No validation curve was logged: the held-out perplexity above is the generalisation evidence.</figcaption>
+              </figure>
+            </div>
+
+            <details class="tech">
+              <summary><span>Technical details</span><i aria-hidden="true"></i></summary>
+              <dl class="spec">
+                <div><dt class="mono">Base model</dt><dd>Qwen2.5-7B-Instruct, 4-bit NF4 with double quantisation (about 14 GB down to about 5 GB per the README).</dd></div>
+                <div><dt class="mono">Adapters</dt><dd>LoRA r = 64, α = 16, dropout 0.05 on <code>q_proj</code> and <code>v_proj</code>; trained with TRL’s SFTTrainer.</dd></div>
+                <div><dt class="mono">Metrics</dt><dd>Perplexity 45.31 → 7.52; cosine similarity 0.096 → 0.259 (base → fine-tuned, held-out Holmes dialogue).</dd></div>
+                <div><dt class="mono">Serving</dt><dd>Modal backend on a serverless A100 that scales to zero; Streamlit chat UI.</dd></div>
+              </dl>
+            </details>
 
             <footer class="case-foot">
               <ul class="tags">
@@ -464,6 +613,8 @@
               <dl class="case-copy">
                 <div class="reveal"><dt class="mono">Problem</dt><dd>Predict a product’s price from its multimodal content, with an error measure (sMAPE) that treats cheap and expensive items fairly — and fast enough to be usable at inference time.</dd></div>
                 <div class="reveal"><dt class="mono">Solution</dt><dd>An ensemble of parallel MLPs trained on CoCa and SigLIP multimodal embeddings, designed for low-latency inference.</dd></div>
+                <div class="reveal"><dt class="mono">Decisions</dt><dd>Small MLP heads on frozen pretrained embeddings instead of fine-tuning a large multimodal model: faster to train and cheap to run, which is how it reaches 0.12 s per sample.</dd></div>
+                <div class="reveal"><dt class="mono">Limits</dt><dd>A 40% sMAPE is a large typical error, so this is a working baseline rather than a pricing model I would deploy. The two figures here are the ones the repository reports.</dd></div>
               </dl>
 
               <aside class="case-panel" data-tilt aria-label="Multimodal Price Estimator: results">
@@ -518,51 +669,94 @@
           <div class="section-head sticky-head">
             <p class="eyebrow mono"><span>03</span> Skills &amp; stack</p>
             <h2 id="skills-title" class="display" data-split>The toolkit,<br>by <em>layer.</em></h2>
-            <p class="section-lede reveal">Everything here appears on my resume or in the repositories above.</p>
+            <p class="section-lede reveal">Core tools first; open a group for the wider list. Dots mark what I have actually used in the projects and role on this page.</p>
           </div>
 
           <div class="skill-groups">
+            <p class="skill-key" id="skill-key"><span class="key u" aria-hidden="true"></span> Used in a project or role on this page <span class="key-sep" aria-hidden="true">·</span> <span class="key" aria-hidden="true"></span> On my resume; not shown in a project here</p>
             <section class="skill-group" aria-labelledby="sg1">
               <h3 id="sg1"><span class="mono">01</span>AI / ML / Deep Learning</h3>
               <ul class="tags tags-light">
-                <li>Machine Learning</li><li>Deep Learning</li><li>NLP</li><li>Transformers</li><li>CNNs</li><li>ViT</li><li>RNNs / LSTMs</li><li>Attention</li><li>Transfer Learning</li><li>Scikit-learn</li><li>XGBoost</li><li>LightGBM</li><li>Random Forest</li><li>Clustering</li><li>PCA</li><li>Anomaly Detection</li>
+                <li class="u">Deep Learning<span class="visually-hidden"> (used in a project)</span></li><li class="u">CNNs<span class="visually-hidden"> (used in a project)</span></li><li class="u">Attention<span class="visually-hidden"> (used in a project)</span></li><li class="u">Transformers<span class="visually-hidden"> (used in a project)</span></li><li>Transfer Learning</li><li>NLP</li>
               </ul>
+              <details class="more-skills">
+                <summary><span>More in this group <b>(10)</b></span><i aria-hidden="true"></i></summary>
+                <ul class="tags tags-light">
+                  <li>Machine Learning</li><li>ViT</li><li>RNNs / LSTMs</li><li>Scikit-learn</li><li>XGBoost</li><li>LightGBM</li><li>Random Forest</li><li>Clustering</li><li>PCA</li><li>Anomaly Detection</li>
+                </ul>
+              </details>
             </section>
             <section class="skill-group" aria-labelledby="sg2">
               <h3 id="sg2"><span class="mono">02</span>Generative AI / LLMs</h3>
               <ul class="tags tags-light">
-                <li>LLMs · SLMs · VLMs</li><li>Hugging Face Transformers</li><li>Prompt Engineering</li><li>Pretraining</li><li>SFT</li><li>RLHF</li><li>DPO</li><li>PEFT</li><li>LoRA · QLoRA</li><li>TRL</li><li>Quantization</li><li>vLLM</li>
+                <li class="u">LoRA · QLoRA<span class="visually-hidden"> (used in a project)</span></li><li class="u">PEFT<span class="visually-hidden"> (used in a project)</span></li><li class="u">TRL · SFT<span class="visually-hidden"> (used in a project)</span></li><li class="u">Quantization<span class="visually-hidden"> (used in a project)</span></li><li class="u">Hugging Face Transformers<span class="visually-hidden"> (used in a project)</span></li>
               </ul>
+              <details class="more-skills">
+                <summary><span>More in this group <b>(6)</b></span><i aria-hidden="true"></i></summary>
+                <ul class="tags tags-light">
+                  <li>LLMs · SLMs · VLMs</li><li>Prompt Engineering</li><li>Pretraining</li><li>RLHF</li><li>DPO</li><li>vLLM</li>
+                </ul>
+              </details>
             </section>
             <section class="skill-group" aria-labelledby="sg3">
               <h3 id="sg3"><span class="mono">03</span>Agentic AI / RAG</h3>
               <ul class="tags tags-light">
-                <li>RAG</li><li>Hybrid Retrieval</li><li>Reranking</li><li>GraphRAG</li><li>Agentic RAG</li><li>Embeddings</li><li>Vector Databases</li><li>LangChain</li><li>LangGraph</li><li>ReAct</li><li>Tool Calling</li><li>Multi-Agent Systems</li><li>MCP</li><li>Context Engineering</li><li>Agent Memory</li><li>AgentOps</li><li>Human-in-the-Loop</li>
+                <li>RAG</li><li>Reranking</li><li>Agentic RAG</li><li>LangGraph</li><li>Tool Calling</li><li>MCP</li>
               </ul>
+              <details class="more-skills">
+                <summary><span>More in this group <b>(11)</b></span><i aria-hidden="true"></i></summary>
+                <ul class="tags tags-light">
+                  <li>Hybrid Retrieval</li><li>GraphRAG</li><li>Embeddings</li><li>Vector Databases</li><li>LangChain</li><li>ReAct</li><li>Multi-Agent Systems</li><li>Context Engineering</li><li>Agent Memory</li><li>AgentOps</li><li>Human-in-the-Loop</li>
+                </ul>
+              </details>
             </section>
             <section class="skill-group" aria-labelledby="sg4">
               <h3 id="sg4"><span class="mono">04</span>Computer Vision</h3>
               <ul class="tags tags-light">
-                <li>PyTorch</li><li>OpenCV</li><li>YOLO</li><li>R-CNNs</li><li>U-Net</li><li>ViT</li><li>Object Detection</li><li>Segmentation</li><li>Image Classification &amp; Captioning</li><li>Grad-CAM</li>
+                <li class="u">PyTorch<span class="visually-hidden"> (used in a project)</span></li><li class="u">Image Classification<span class="visually-hidden"> (used in a project)</span></li><li class="u">Grad-CAM<span class="visually-hidden"> (used in a project)</span></li><li class="u">Segmentation<span class="visually-hidden"> (used in a project)</span></li><li class="u">U-Net<span class="visually-hidden"> (used in a project)</span></li><li>OpenCV</li>
               </ul>
+              <details class="more-skills">
+                <summary><span>More in this group <b>(5)</b></span><i aria-hidden="true"></i></summary>
+                <ul class="tags tags-light">
+                  <li>YOLO</li><li>R-CNNs</li><li>ViT</li><li>Object Detection</li><li>Image Captioning</li>
+                </ul>
+              </details>
             </section>
             <section class="skill-group" aria-labelledby="sg5">
               <h3 id="sg5"><span class="mono">05</span>Evaluation &amp; Safety</h3>
               <ul class="tags tags-light">
-                <li>Precision / Recall / F1</li><li>ROC-AUC</li><li>mAP</li><li>IoU</li><li>Error Analysis</li><li>SHAP</li><li>RAGAS</li><li>DeepEval</li><li>LangSmith</li><li>LLM Guardrails</li><li>Prompt-Injection Defense</li><li>Tracing &amp; Observability</li>
+                <li class="u">Precision / Recall / F1<span class="visually-hidden"> (used in a project)</span></li><li class="u">ROC-AUC<span class="visually-hidden"> (used in a project)</span></li><li class="u">Error Analysis<span class="visually-hidden"> (used in a project)</span></li><li>RAGAS</li><li>LLM Guardrails</li><li>Tracing &amp; Observability</li>
               </ul>
+              <details class="more-skills">
+                <summary><span>More in this group <b>(6)</b></span><i aria-hidden="true"></i></summary>
+                <ul class="tags tags-light">
+                  <li>mAP</li><li>IoU</li><li>SHAP</li><li>DeepEval</li><li>LangSmith</li><li>Prompt-Injection Defense</li>
+                </ul>
+              </details>
             </section>
             <section class="skill-group" aria-labelledby="sg6">
               <h3 id="sg6"><span class="mono">06</span>Programming &amp; Data</h3>
               <ul class="tags tags-light">
-                <li>Python</li><li>SQL</li><li>Data Structures &amp; Algorithms</li><li>OOP</li><li>NumPy</li><li>Pandas</li><li>SciPy</li><li>EDA</li><li>Feature Engineering</li><li>Statistics &amp; Hypothesis Testing</li><li>Cross-Validation</li><li>Hyperparameter Tuning</li><li>Matplotlib</li><li>Seaborn</li><li>Selenium</li><li>BeautifulSoup</li>
+                <li class="u">Python<span class="visually-hidden"> (used in a project)</span></li><li>SQL</li><li>NumPy</li><li>Pandas</li><li class="u">Selenium<span class="visually-hidden"> (used in a project)</span></li><li class="u">BeautifulSoup<span class="visually-hidden"> (used in a project)</span></li>
               </ul>
+              <details class="more-skills">
+                <summary><span>More in this group <b>(10)</b></span><i aria-hidden="true"></i></summary>
+                <ul class="tags tags-light">
+                  <li>Data Structures &amp; Algorithms</li><li>OOP</li><li>SciPy</li><li>EDA</li><li>Feature Engineering</li><li>Statistics &amp; Hypothesis Testing</li><li>Cross-Validation</li><li>Hyperparameter Tuning</li><li>Matplotlib</li><li>Seaborn</li>
+                </ul>
+              </details>
             </section>
             <section class="skill-group" aria-labelledby="sg7">
               <h3 id="sg7"><span class="mono">07</span>Backend, Cloud &amp; MLOps</h3>
               <ul class="tags tags-light">
-                <li>FastAPI</li><li>REST APIs</li><li>Docker</li><li>MLflow</li><li>Weights &amp; Biases</li><li>AWS</li><li>PostgreSQL</li><li>Git</li><li>Streamlit</li><li>Hugging Face Hub &amp; Spaces</li><li>Modal</li><li>Render</li><li>pytest</li>
+                <li class="u">FastAPI<span class="visually-hidden"> (used in a project)</span></li><li class="u">Docker<span class="visually-hidden"> (used in a project)</span></li><li class="u">Streamlit<span class="visually-hidden"> (used in a project)</span></li><li class="u">Weights &amp; Biases<span class="visually-hidden"> (used in a project)</span></li><li class="u">Hugging Face Hub &amp; Spaces<span class="visually-hidden"> (used in a project)</span></li><li class="u">pytest<span class="visually-hidden"> (used in a project)</span></li>
               </ul>
+              <details class="more-skills">
+                <summary><span>More in this group <b>(7)</b></span><i aria-hidden="true"></i></summary>
+                <ul class="tags tags-light">
+                  <li class="u">REST APIs<span class="visually-hidden"> (used in a project)</span></li><li class="u">Modal<span class="visually-hidden"> (used in a project)</span></li><li class="u">Render<span class="visually-hidden"> (used in a project)</span></li><li>MLflow</li><li>AWS</li><li>PostgreSQL</li><li>Git</li>
+                </ul>
+              </details>
             </section>
           </div>
         </div>
@@ -617,6 +811,7 @@
               <article class="tl-entry reveal">
                 <p class="tl-date mono">2025</p>
                 <div>
+                  <p class="tl-big" aria-hidden="true"><span class="mono">AIR</span>121</p>
                   <h4>GATE Data Science &amp; AI — All India Rank 121</h4>
                   <p class="tl-meta mono">GATE score 780</p>
                 </div>
@@ -624,6 +819,7 @@
               <article class="tl-entry reveal">
                 <p class="tl-date mono">2025</p>
                 <div>
+                  <p class="tl-big" aria-hidden="true"><span class="mono">Rank</span>11</p>
                   <h4>Amazon ML Challenge — Rank 11</h4>
                   <p class="tl-meta mono">Among 82,000+ teams nationwide</p>
                 </div>
@@ -644,21 +840,21 @@
           </div>
 
           <!-- Resume -->
-          <aside class="resume-band reveal" aria-labelledby="resume-title">
+          <aside id="resume" class="resume-band reveal" aria-labelledby="resume-title">
             <div>
               <p class="eyebrow mono">Resume</p>
               <h3 id="resume-title" class="resume-title">Prefer the one-pager?</h3>
-              <p>Two editions, same facts — choose whichever fits the role.</p>
+              <p>Two editions with the same facts, each emphasising different projects. Choose whichever fits the role.</p>
             </div>
             <div class="resume-actions">
               <a class="resume-card" href="assets/resume/Shubham-Haraniya-Resume-DS.pdf" target="_blank" rel="noopener" data-cursor="PDF">
-                <span class="mono">PDF · Applied AI &amp; GenAI</span>
-                <strong>Resume — DS edition</strong>
+                <span class="mono">PDF · opens in a new tab</span>
+                <strong>Download Resume — Applied AI / Generative AI</strong>
                 <small>Includes the Crop Disease Advisor vision + LLM project</small>
               </a>
               <a class="resume-card" href="assets/resume/Shubham-Haraniya-Resume-CV.pdf" target="_blank" rel="noopener" data-cursor="PDF">
-                <span class="mono">PDF · Deep learning &amp; CV</span>
-                <strong>Resume — CV edition</strong>
+                <span class="mono">PDF · opens in a new tab</span>
+                <strong>Download Resume — Deep Learning / Computer Vision</strong>
                 <small>Includes EfficientUNet and a fuller skills list</small>
               </a>
             </div>
@@ -689,7 +885,8 @@
               <ul class="channels reveal-stagger">
                 <li><a href="https://www.linkedin.com/in/shubham-haraniya" target="_blank" rel="noopener" data-cursor="Open"><span class="mono">LinkedIn</span><b>in/shubham-haraniya</b><i aria-hidden="true">↗</i></a></li>
                 <li><a href="https://github.com/ShubhamHaraniya" target="_blank" rel="noopener" data-cursor="Open"><span class="mono">GitHub</span><b>ShubhamHaraniya</b><i aria-hidden="true">↗</i></a></li>
-                <li><a href="assets/resume/Shubham-Haraniya-Resume-DS.pdf" target="_blank" rel="noopener" data-cursor="PDF"><span class="mono">Resume</span><b>Download PDF</b><i aria-hidden="true">↓</i></a></li>
+                <li><a href="assets/resume/Shubham-Haraniya-Resume-DS.pdf" target="_blank" rel="noopener" data-cursor="PDF"><span class="mono">Resume</span><b>Download Resume — Applied AI / Generative AI</b><i aria-hidden="true">↓</i></a></li>
+                <li><a href="assets/resume/Shubham-Haraniya-Resume-CV.pdf" target="_blank" rel="noopener" data-cursor="PDF"><span class="mono">Resume</span><b>Download Resume — Deep Learning / Computer Vision</b><i aria-hidden="true">↓</i></a></li>
               </ul>
             </div>
 
@@ -697,7 +894,7 @@
               <p class="form-title mono">Or send a note</p>
               <input type="hidden" name="access_key" value="47117e1d-1a78-40f6-a646-761313297d1a">
               <input type="hidden" name="subject" value="New message from portfolio">
-              <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" aria-hidden="true">
 
               <div class="field-row">
                 <div class="field">
@@ -750,6 +947,6 @@
   <script src="js/vendor/gsap.min.js"></script>
   <script src="js/vendor/ScrollTrigger.min.js"></script>
   <script src="js/vendor/lenis.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>
