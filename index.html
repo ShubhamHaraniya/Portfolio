@@ -28,7 +28,9 @@
   <meta name="twitter:image" content="https://shubhamharaniya.github.io/Portfolio/assets/og-image.png">
   <meta name="twitter:image:alt" content="Shubham Haraniya — Engineering intelligence. Building AI that works.">
 
-  <link rel="icon" type="image/svg+xml" href="assets/brand/monogram.svg">
+  <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+  <link rel="icon" href="assets/icons/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="assets/icons/favicon-64.png">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -52,7 +54,7 @@
       if (d.classList.contains('reduce') || window.matchMedia('(max-width: 899px)').matches) d.classList.add('no-loader');
     })();
   </script>
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=23">
 
   <script type="application/ld+json">
   {
@@ -64,7 +66,127 @@
         "url": "https://shubhamharaniya.github.io/Portfolio/",
         "name": "Shubham Haraniya — Portfolio",
         "inLanguage": "en",
-        "author": { "@id": "https://shubhamharaniya.github.io/Portfolio/#person" }
+        "author": {
+          "@id": "https://shubhamharaniya.github.io/Portfolio/#person"
+        }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://shubhamharaniya.github.io/Portfolio/#profile",
+        "url": "https://shubhamharaniya.github.io/Portfolio/",
+        "name": "Shubham Haraniya — AI/ML Engineer · LLMs, Vision, MLOps",
+        "inLanguage": "en",
+        "dateModified": "2026-10-23",
+        "isPartOf": {
+          "@id": "https://shubhamharaniya.github.io/Portfolio/#website"
+        },
+        "mainEntity": {
+          "@id": "https://shubhamharaniya.github.io/Portfolio/#person"
+        },
+        "about": {
+          "@id": "https://shubhamharaniya.github.io/Portfolio/#person"
+        },
+        "hasPart": [
+          {
+            "@type": "WebPageElement",
+            "@id": "https://shubhamharaniya.github.io/Portfolio/#about",
+            "name": "About",
+            "description": "Who Shubham Haraniya is: an M.Tech AI student at IIT Jodhpur who builds whole ML systems, from model and evaluation to API, container and deployment.",
+            "url": "https://shubhamharaniya.github.io/Portfolio/#about",
+            "cssSelector": "#about",
+            "isPartOf": {
+              "@id": "https://shubhamharaniya.github.io/Portfolio/#profile"
+            }
+          },
+          {
+            "@type": "WebPageElement",
+            "@id": "https://shubhamharaniya.github.io/Portfolio/#projects",
+            "name": "Selected work",
+            "description": "Four case studies from public repositories: the problem, the design, what was built, and what the numbers do and do not show.",
+            "url": "https://shubhamharaniya.github.io/Portfolio/#projects",
+            "cssSelector": "#projects",
+            "isPartOf": {
+              "@id": "https://shubhamharaniya.github.io/Portfolio/#profile"
+            }
+          },
+          {
+            "@type": "WebPageElement",
+            "@id": "https://shubhamharaniya.github.io/Portfolio/#deepfake",
+            "name": "Deepfake Forensics",
+            "description": "Frequency-aware SE-ADDNet deepfake detector: 94.6% accuracy, 98.95% AUC, with Grad-CAM localisation. Architecture, decisions, results and limits.",
+            "url": "https://shubhamharaniya.github.io/Portfolio/#deepfake",
+            "cssSelector": "#deepfake",
+            "isPartOf": {
+              "@id": "https://shubhamharaniya.github.io/Portfolio/#profile"
+            }
+          },
+          {
+            "@type": "WebPageElement",
+            "@id": "https://shubhamharaniya.github.io/Portfolio/#crop",
+            "name": "Crop Disease Advisor",
+            "description": "Vision plus LLM pipeline: EfficientNet-B4 disease classifier feeding a QLoRA-tuned Qwen2.5-3B advisor behind a FastAPI service. Architecture, guard logic and limits.",
+            "url": "https://shubhamharaniya.github.io/Portfolio/#crop",
+            "cssSelector": "#crop",
+            "isPartOf": {
+              "@id": "https://shubhamharaniya.github.io/Portfolio/#profile"
+            }
+          },
+          {
+            "@type": "WebPageElement",
+            "@id": "https://shubhamharaniya.github.io/Portfolio/#persona",
+            "name": "Sherlock Persona Model",
+            "description": "QLoRA fine-tune of Qwen2.5-7B-Instruct as Sherlock Holmes: perplexity 45.31 to 7.52, served serverlessly on Modal. Architecture, evaluation and limits.",
+            "url": "https://shubhamharaniya.github.io/Portfolio/#persona",
+            "cssSelector": "#persona",
+            "isPartOf": {
+              "@id": "https://shubhamharaniya.github.io/Portfolio/#profile"
+            }
+          },
+          {
+            "@type": "WebPageElement",
+            "@id": "https://shubhamharaniya.github.io/Portfolio/#price",
+            "name": "Multimodal Price Estimator",
+            "description": "CoCa and SigLIP embedding ensemble for price prediction: 40.06% sMAPE at about 0.12 s per sample.",
+            "url": "https://shubhamharaniya.github.io/Portfolio/#price",
+            "cssSelector": "#price",
+            "isPartOf": {
+              "@id": "https://shubhamharaniya.github.io/Portfolio/#profile"
+            }
+          },
+          {
+            "@type": "WebPageElement",
+            "@id": "https://shubhamharaniya.github.io/Portfolio/#skills",
+            "name": "Skills",
+            "description": "Tools and methods across AI/ML and deep learning, generative AI and LLMs, agentic AI and RAG, computer vision, evaluation and safety, programming, and backend, cloud and MLOps.",
+            "url": "https://shubhamharaniya.github.io/Portfolio/#skills",
+            "cssSelector": "#skills",
+            "isPartOf": {
+              "@id": "https://shubhamharaniya.github.io/Portfolio/#profile"
+            }
+          },
+          {
+            "@type": "WebPageElement",
+            "@id": "https://shubhamharaniya.github.io/Portfolio/#experience",
+            "name": "Experience & education",
+            "description": "Experience, education at IIT Jodhpur and L.D. College of Engineering, GATE Data Science & AI 2025 AIR 121, Amazon ML Challenge 2025 Rank 11, and certifications.",
+            "url": "https://shubhamharaniya.github.io/Portfolio/#experience",
+            "cssSelector": "#experience",
+            "isPartOf": {
+              "@id": "https://shubhamharaniya.github.io/Portfolio/#profile"
+            }
+          },
+          {
+            "@type": "WebPageElement",
+            "@id": "https://shubhamharaniya.github.io/Portfolio/#contact",
+            "name": "Contact",
+            "description": "Ways to reach Shubham Haraniya about roles and collaborations.",
+            "url": "https://shubhamharaniya.github.io/Portfolio/#contact",
+            "cssSelector": "#contact",
+            "isPartOf": {
+              "@id": "https://shubhamharaniya.github.io/Portfolio/#profile"
+            }
+          }
+        ]
       },
       {
         "@type": "Person",
@@ -74,15 +196,181 @@
         "image": "https://shubhamharaniya.github.io/Portfolio/assets/og-image.png",
         "jobTitle": "AI/ML Engineer",
         "description": "M.Tech AI student at IIT Jodhpur building end-to-end ML and GenAI systems.",
-        "knowsAbout": ["Machine learning", "Deep learning", "Large language models", "LLM fine-tuning", "Retrieval-augmented generation", "Computer vision", "MLOps"],
+        "knowsAbout": [
+          "Machine learning",
+          "Deep learning",
+          "Large language models",
+          "LLM fine-tuning",
+          "Retrieval-augmented generation",
+          "Computer vision",
+          "MLOps"
+        ],
         "alumniOf": [
-          { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology, Jodhpur" },
-          { "@type": "CollegeOrUniversity", "name": "L.D. College of Engineering, Ahmedabad" }
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Indian Institute of Technology, Jodhpur"
+          },
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "L.D. College of Engineering, Ahmedabad"
+          }
+        ],
+        "award": [
+          "GATE Data Science & AI 2025 — All India Rank 121",
+          "Amazon ML Challenge 2025 — Rank 11"
         ],
         "sameAs": [
           "https://github.com/ShubhamHaraniya",
           "https://www.linkedin.com/in/shubham-haraniya"
         ]
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://shubhamharaniya.github.io/Portfolio/#projects-list",
+        "name": "Selected projects",
+        "itemListOrder": "https://schema.org/ItemListOrderAscending",
+        "numberOfItems": 4,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://shubhamharaniya.github.io/Portfolio/#deepfake",
+            "item": {
+              "@id": "https://shubhamharaniya.github.io/Portfolio/#deepfake-code"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "url": "https://shubhamharaniya.github.io/Portfolio/#crop",
+            "item": {
+              "@id": "https://shubhamharaniya.github.io/Portfolio/#crop-code"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "url": "https://shubhamharaniya.github.io/Portfolio/#persona",
+            "item": {
+              "@id": "https://shubhamharaniya.github.io/Portfolio/#persona-code"
+            }
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "url": "https://shubhamharaniya.github.io/Portfolio/#price",
+            "item": {
+              "@id": "https://shubhamharaniya.github.io/Portfolio/#price-code"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "@id": "https://shubhamharaniya.github.io/Portfolio/#deepfake-code",
+        "name": "Deepfake Forensics",
+        "alternateName": "Frequency-aware SE-ADDNet",
+        "description": "Dual-stream deepfake detector: a spatial EfficientNet-B5 with SE/ADD attention plus an FFT frequency stream, fused by a learnable FrequencyGate, with Grad-CAM localisation. 94.6% accuracy and 98.95% AUC on a 12,000-image test split of DeepFakeFace.",
+        "url": "https://shubhamharaniya.github.io/Portfolio/#deepfake",
+        "codeRepository": "https://github.com/ShubhamHaraniya/deepfake-detection",
+        "programmingLanguage": "Python",
+        "author": {
+          "@id": "https://shubhamharaniya.github.io/Portfolio/#person"
+        },
+        "keywords": [
+          "deepfake detection",
+          "computer vision",
+          "EfficientNet",
+          "frequency analysis",
+          "Grad-CAM",
+          "PyTorch",
+          "Streamlit"
+        ],
+        "isPartOf": {
+          "@id": "https://shubhamharaniya.github.io/Portfolio/#website"
+        }
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "@id": "https://shubhamharaniya.github.io/Portfolio/#crop-code",
+        "name": "Crop Disease Advisor",
+        "alternateName": "Vision + LLM pipeline",
+        "description": "Two-stage crop-disease advisor: an EfficientNet-B4 classifier (38 classes, PlantVillage) feeds a QLoRA-tuned Qwen2.5-3B that returns a structured JSON treatment plan, with a retry-then-lookup guard. FastAPI service with a multi-stage Docker build, deployed on Render and Hugging Face Spaces.",
+        "url": "https://shubhamharaniya.github.io/Portfolio/#crop",
+        "codeRepository": "https://github.com/ShubhamHaraniya/crop-disease-advisor",
+        "programmingLanguage": "Python",
+        "author": {
+          "@id": "https://shubhamharaniya.github.io/Portfolio/#person"
+        },
+        "keywords": [
+          "crop disease",
+          "computer vision",
+          "LLM",
+          "QLoRA",
+          "FastAPI",
+          "Docker",
+          "MLOps",
+          "Hugging Face"
+        ],
+        "isPartOf": {
+          "@id": "https://shubhamharaniya.github.io/Portfolio/#website"
+        },
+        "workExample": {
+          "@type": "SoftwareApplication",
+          "name": "Crop Disease Advisor — live demo",
+          "url": "https://crop-disease-advisor.onrender.com/",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "Web"
+        }
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "@id": "https://shubhamharaniya.github.io/Portfolio/#persona-code",
+        "name": "Sherlock Persona Model",
+        "alternateName": "Persona-Modeling",
+        "description": "QLoRA fine-tune of Qwen2.5-7B-Instruct to reason and speak like Sherlock Holmes: perplexity 45.31 to 7.52 on held-out dialogue, served from a Modal A100 that scales to zero behind a Streamlit chat UI.",
+        "url": "https://shubhamharaniya.github.io/Portfolio/#persona",
+        "codeRepository": "https://github.com/ShubhamHaraniya/Persona-Modeling",
+        "programmingLanguage": "Python",
+        "author": {
+          "@id": "https://shubhamharaniya.github.io/Portfolio/#person"
+        },
+        "keywords": [
+          "LLM fine-tuning",
+          "QLoRA",
+          "LoRA",
+          "Qwen2.5",
+          "TRL",
+          "Modal",
+          "Streamlit"
+        ],
+        "isPartOf": {
+          "@id": "https://shubhamharaniya.github.io/Portfolio/#website"
+        }
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "@id": "https://shubhamharaniya.github.io/Portfolio/#price-code",
+        "name": "Multimodal Price Estimator",
+        "alternateName": "CoCa + SigLIP ensemble",
+        "description": "Ensemble of parallel MLPs trained on CoCa and SigLIP multimodal embeddings to predict product prices: 40.06% sMAPE at about 0.12 seconds per sample.",
+        "url": "https://shubhamharaniya.github.io/Portfolio/#price",
+        "codeRepository": "https://github.com/ShubhamHaraniya/Multimodal-Price-Estimator",
+        "programmingLanguage": "Python",
+        "author": {
+          "@id": "https://shubhamharaniya.github.io/Portfolio/#person"
+        },
+        "keywords": [
+          "multimodal learning",
+          "CoCa",
+          "SigLIP",
+          "ensemble learning",
+          "regression",
+          "PyTorch"
+        ],
+        "isPartOf": {
+          "@id": "https://shubhamharaniya.github.io/Portfolio/#website"
+        }
       }
     ]
   }
@@ -111,7 +399,7 @@
   <!-- ─────────── HEADER ─────────── -->
   <header id="topbar" class="topbar">
     <a href="#home" class="brand" aria-label="Shubham Haraniya — home">
-      <img class="brand-mark" src="assets/brand/monogram.svg" alt="" width="36" height="36">
+      <svg class="brand-mark" viewBox="0 0 64 64" width="36" height="36" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14.08" fill="#C7F36B"/><g fill="#15171C"><path transform="translate(9.607 45.106) scale(0.037447 -0.037447)" d="M309 -14Q228 -14 166.0 15.0Q104 44 69.0 98.0Q34 152 34 228V256H164V228Q164 165 203.0 133.5Q242 102 309 102Q377 102 410.5 129.0Q444 156 444 198Q444 227 427.5 245.0Q411 263 379.5 274.5Q348 286 303 296L280 301Q208 317 156.5 341.5Q105 366 77.5 406.0Q50 446 50 510Q50 574 80.5 619.5Q111 665 166.5 689.5Q222 714 297 714Q372 714 430.5 688.5Q489 663 522.5 612.5Q556 562 556 486V456H426V486Q426 526 410.5 550.5Q395 575 366.0 586.5Q337 598 297 598Q237 598 208.5 575.5Q180 553 180 514Q180 488 193.5 470.0Q207 452 234.0 440.0Q261 428 303 419L326 414Q401 398 456.5 373.0Q512 348 543.0 307.0Q574 266 574 202Q574 138 541.5 89.5Q509 41 449.5 13.5Q390 -14 309 -14Z"/><path transform="translate(31.026 45.106) scale(0.037447 -0.037447)" d="M66 0V700H198V411H458V700H590V0H458V291H198V0Z"/><circle cx="43.309" cy="32.000" r="3.932"/></g><circle cx="43.309" cy="32.000" r="1.648" fill="#C7F36B"/></svg>
       <span class="brand-name">Shubham Haraniya</span>
     </a>
 
@@ -178,32 +466,8 @@
             <span class="nm-line" aria-hidden="true"><span class="nm-l">S</span><span class="nm-l">H</span><span class="nm-l">U</span><span class="nm-l">B</span><span class="nm-l">H</span><span class="nm-l">A</span><span class="nm-l">M</span></span>
             <span class="nm-line" aria-hidden="true"><span class="nm-l">H</span><span class="nm-l">A</span><span class="nm-l">R</span><span class="nm-l">A</span><span class="nm-l">N</span><span class="nm-l">I</span><span class="nm-l nm-y">Y</span><span class="nm-l">A</span></span>
           </h1>
-          <svg class="nm-fx" viewBox="0 0 620 195" aria-hidden="true" focusable="false">
-            <!-- accent stroke under the name; 1 unit = 1% of the name's font size -->
-            <path class="ul ul-d" pathLength="1" d="M6,177 H402"/>
-            <path class="ul ul-m" pathLength="1" d="M6,177 H446"/>
-            <g class="nm-net">
-              <path class="ul" pathLength="1" d="M402,177 C444,177 462,162 462,126"/>
-              <g class="edges">
-                <path class="ln" pathLength="1" d="M452,40 L462,40"/>
-                <path class="ln" pathLength="1" d="M462,40 L524,18"/>
-                <path class="ln" pathLength="1" d="M462,40 L524,84"/>
-                <path class="ln" pathLength="1" d="M462,126 L524,84"/>
-                <path class="ln" pathLength="1" d="M462,126 L524,142"/>
-                <path class="ln" pathLength="1" d="M524,18 L594,98"/>
-                <path class="ln" pathLength="1" d="M524,84 L594,98"/>
-                <path class="ln" pathLength="1" d="M524,142 L594,98"/>
-              </g>
-              <circle class="nd" cx="462" cy="40" r="4.5"/>
-              <circle class="nd" cx="462" cy="126" r="4.5"/>
-              <circle class="nd" cx="524" cy="18" r="5.5"/>
-              <circle class="nd" cx="524" cy="84" r="5.5"/>
-              <circle class="nd" cx="524" cy="142" r="5.5"/>
-              <circle class="pulse" cx="594" cy="98" r="9"/>
-              <circle class="pulse p2" cx="594" cy="98" r="9"/>
-              <circle class="nd-l" cx="594" cy="98" r="9"/>
-            </g>
-          </svg>
+          <svg class="nm-ul" aria-hidden="true" focusable="false"><path class="ul" pathLength="1" d="M0 0"/></svg>
+          <canvas class="nm-net" aria-hidden="true"></canvas>
         </div>
 
         <div class="hero-band">
@@ -231,61 +495,11 @@
               </a>
             </div>
           </div>
-          <p class="hero-lede" data-hero-fade>
-            I’m an AI/ML engineer who ships whole systems — from the model and its
-            evaluation to the API, container and deployment that put it in front of users.
-            LLM fine-tuning, retrieval and agents, and computer vision.
+          <p class="hero-lede hero-kw mono" data-hero-fade>
+            <span>LLMs</span><i aria-hidden="true">·</i><span>RAG</span><i aria-hidden="true">·</i><span>Agents</span><i aria-hidden="true">·</i><span>Computer vision</span><i aria-hidden="true">·</i><span>MLOps</span>
           </p>
         </div>
 
-          <!-- Lifecycle workflow (hover / focus / tap a stage) -->
-          <figure class="wf" aria-labelledby="wf-cap">
-            <ol class="wf-list" id="wf-list">
-              <li class="wf-step is-on">
-                <button type="button" class="wf-node" aria-expanded="true" aria-controls="wf-d0">
-                  <span class="wf-idx mono" aria-hidden="true">01</span>
-                  <span class="wf-name mono">Data</span>
-                  <span class="wf-short">Collect, clean, split</span>
-                </button>
-              </li>
-              <li class="wf-step">
-                <button type="button" class="wf-node" aria-expanded="false" aria-controls="wf-d1">
-                  <span class="wf-idx mono" aria-hidden="true">02</span>
-                  <span class="wf-name mono">Model</span>
-                  <span class="wf-short">Train or fine-tune</span>
-                </button>
-              </li>
-              <li class="wf-step">
-                <button type="button" class="wf-node" aria-expanded="false" aria-controls="wf-d2">
-                  <span class="wf-idx mono" aria-hidden="true">03</span>
-                  <span class="wf-name mono">Evaluation</span>
-                  <span class="wf-short">Held-out, with error analysis</span>
-                </button>
-              </li>
-              <li class="wf-step">
-                <button type="button" class="wf-node" aria-expanded="false" aria-controls="wf-d3">
-                  <span class="wf-idx mono" aria-hidden="true">04</span>
-                  <span class="wf-name mono">API</span>
-                  <span class="wf-short">Typed, validated endpoints</span>
-                </button>
-              </li>
-              <li class="wf-step">
-                <button type="button" class="wf-node" aria-expanded="false" aria-controls="wf-d4">
-                  <span class="wf-idx mono" aria-hidden="true">05</span>
-                  <span class="wf-name mono">Deployment</span>
-                  <span class="wf-short">Container, CI, hosted demo</span>
-                </button>
-              </li>
-            </ol>
-            <div class="wf-details">
-                <p class="wf-detail is-on" id="wf-d0">Datasets, labels and a fixed split before any model exists. <em>Seen in:</em> DeepFakeFace (~120K images, seeded 80/10/10 split); an instruction set for crop advice.</p>
-                <p class="wf-detail" id="wf-d1">Architecture and training recipe, tracked as experiments. <em>Seen in:</em> a dual-stream spatial + frequency CNN; QLoRA on Qwen2.5 (3B and 7B).</p>
-                <p class="wf-detail" id="wf-d2">Metrics on data the model never trained on, plus where it fails. <em>Seen in:</em> F1, AUC, EER and a confusion matrix; BERTScore and perplexity for the LLM stages.</p>
-                <p class="wf-detail" id="wf-d3">A service contract instead of a notebook. <em>Seen in:</em> FastAPI <code>/predict</code>, <code>/health</code>, <code>/classes</code>; schema-validated JSON from the LLM with a fallback.</p>
-                <p class="wf-detail" id="wf-d4">Reproducible builds and a place to try it. <em>Seen in:</em> multi-stage Docker, GitHub Actions tests, Hugging Face Space; a Modal serverless A100 for the persona model.</p>
-            </div>
-            <figcaption id="wf-cap" class="mono">The lifecycle I build for each project · select a stage</figcaption>
-          </figure>
 
         <ul class="hero-stats" data-hero-fade>
           <li>
@@ -299,10 +513,6 @@
           <li>
             <p class="stat-big"><span data-count="9.0" data-decimals="1">9.0</span><span class="stat-suf mono">CGPA</span></p>
             <p class="stat-cap mono">M.Tech AI · IIT Jodhpur</p>
-          </li>
-          <li>
-            <p class="stat-big"><span data-count="70">70</span><span class="stat-suf mono">%+</span></p>
-            <p class="stat-cap mono">Less manual data collection · IntelKit</p>
           </li>
         </ul>
       </div>
@@ -391,20 +601,60 @@
                 <div class="reveal"><dt class="mono">Limits</dt><dd>Results come from one benchmark (DeepFakeFace, an ~80/10/10 split of ~120K images). No cross-dataset evaluation is reported, so read the numbers as in-distribution. Validation accuracy plateaus around 93–95% while training accuracy keeps climbing, a mild overfit.</dd></div>
               </dl>
 
-              <aside class="case-panel" data-tilt aria-label="Deepfake Forensics: results and pipeline">
+              <aside class="case-panel" data-tilt aria-label="Deepfake Forensics: results and architecture">
                 <p class="panel-label mono">Test set · 12,000 images</p>
                 <ul class="metrics">
                   <li><span class="m-num"><b data-count="94.6" data-decimals="1">94.6</b><small>%</small></span><span class="m-cap mono">Accuracy</span></li>
                   <li><span class="m-num"><b data-count="96.3" data-decimals="1">96.3</b><small>%</small></span><span class="m-cap mono">F1</span></li>
                   <li><span class="m-num"><b data-count="98.95" data-decimals="2">98.95</b><small>%</small></span><span class="m-cap mono">AUC</span></li>
                 </ul>
-                <p class="panel-label mono">Pipeline</p>
-                <ol class="flow">
-                  <li><span class="mono">in</span>Face image, 256 × 256</li>
-                  <li class="fork"><span class="mono">2×</span><div><em>Spatial</em> · EfficientNet-B5 + SE/ADD<br><em>Frequency</em> · FFT → 3-block CNN</div></li>
-                  <li><span class="mono">fuse</span>Learnable FrequencyGate → 512-d</li>
-                  <li><span class="mono">out</span>Real / Fake + Grad-CAM</li>
-                </ol>
+                <p class="panel-label mono">Architecture · data → model → serving</p>
+                <figure class="arch-fig">
+                <svg class="arch" viewBox="0 0 428 388" role="img" aria-labelledby="arch-df-t arch-df-d" focusable="false" preserveAspectRatio="xMidYMin meet">
+<title id="arch-df-t">Deepfake Forensics architecture</title><desc id="arch-df-d">Data: DeepFakeFace images, about 120 thousand, split roughly 80/10/10, with fakes outnumbering reals about three to one; faces are resized to 256 by 256. Model: two parallel streams, a spatial EfficientNet-B5 with SE and ADD attention and a frequency stream that runs the FFT magnitude spectrum through a three-block CNN; a learnable sigmoid-gated FrequencyGate fuses them into a 512-dimensional feature that is classified as real or fake. Serving: a command-line tool emitting a JSON report and a Streamlit app with Grad-CAM localisation.</desc>
+<defs><marker id="ah-df" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1.5 9 5 1 8.5" /></marker></defs>
+<g class="arch-band"><rect class="band" x="2" y="8" width="422" height="88" rx="14"/>
+<text class="band-t" transform="translate(16,52) rotate(-90)" text-anchor="middle">DATA</text></g>
+<g class="arch-band"><rect class="band" x="2" y="110" width="422" height="182" rx="14"/>
+<text class="band-t" transform="translate(16,201) rotate(-90)" text-anchor="middle">MODEL</text></g>
+<g class="arch-band"><rect class="band" x="2" y="306" width="422" height="74" rx="14"/>
+<text class="band-t" transform="translate(16,343) rotate(-90)" text-anchor="middle">SERVING</text></g>
+<g class="arch-e"><path class="e" d="M226 84 V102 H126 V121" marker-end="url(#ah-df)"/><path class="fl" d="M226 84 V102 H126 V121"/></g>
+<g class="arch-e"><path class="e" d="M226 84 V102 H326 V121" marker-end="url(#ah-df)"/><path class="fl" d="M226 84 V102 H326 V121"/></g>
+<g class="arch-e"><path class="e" d="M126 186 V200 H226 V215" marker-end="url(#ah-df)"/><path class="fl" d="M126 186 V200 H226 V215"/></g>
+<g class="arch-e"><path class="e" d="M326 186 V200 H226 V215" marker-end="url(#ah-df)"/><path class="fl" d="M326 186 V200 H226 V215"/></g>
+<g class="arch-e"><path class="e" d="M226 280 V298 H126 V317" marker-end="url(#ah-df)"/><path class="fl" d="M226 280 V298 H126 V317"/></g>
+<g class="arch-e"><path class="e" d="M226 280 V298 H326 V317" marker-end="url(#ah-df)"/><path class="fl" d="M226 280 V298 H326 V317"/></g>
+<g class="arch-n"><rect x="34" y="20" width="384" height="64" rx="10"/>
+<text class="t1" x="46" y="41">Face image · 256 × 256</text>
+<text class="t2" x="46" y="57">DeepFakeFace · ~120K · 80/10/10</text>
+<text class="t2" x="46" y="70">fakes : reals ≈ 3 : 1</text>
+</g>
+<g class="arch-n"><rect x="34" y="122" width="185" height="64" rx="10"/>
+<text class="t1" x="46" y="143">Spatial stream</text>
+<text class="t2" x="46" y="159">EfficientNet-B5</text>
+<text class="t2" x="46" y="172">SE + ADD attention</text>
+</g>
+<g class="arch-n"><rect x="233" y="122" width="185" height="64" rx="10"/>
+<text class="t1" x="245" y="143">Frequency stream</text>
+<text class="t2" x="245" y="159">FFT magnitude</text>
+<text class="t2" x="245" y="172">3-block CNN</text>
+</g>
+<g class="arch-n hot"><rect x="34" y="216" width="384" height="64" rx="10"/>
+<text class="t1" x="46" y="237">FrequencyGate fusion</text>
+<text class="t2" x="46" y="253">learnable, sigmoid-gated → 512-d</text>
+<text class="t2" x="46" y="266">→ Real / Fake</text>
+</g>
+<g class="arch-n"><rect x="34" y="318" width="185" height="50" rx="10"/>
+<text class="t1" x="46" y="339">CLI</text>
+<text class="t2" x="46" y="355">JSON report</text>
+</g>
+<g class="arch-n"><rect x="233" y="318" width="185" height="50" rx="10"/>
+<text class="t1" x="245" y="339">Streamlit app</text>
+<text class="t2" x="245" y="355">Grad-CAM localisation</text>
+</g>
+</svg>
+                </figure>
               </aside>
             </div>
 
@@ -479,21 +729,65 @@
                 <div class="reveal"><dt class="mono">Limits</dt><dd>The LLM stage needs a GPU, so the CPU deployment serves the lookup fallback. Coverage is 38 classes, and the advice is model-generated decision support, not agronomic guidance. The tests use mocked weights, so they check structure rather than accuracy.</dd></div>
               </dl>
 
-              <aside class="case-panel" data-tilt aria-label="Crop Disease Advisor: results and pipeline">
+              <aside class="case-panel" data-tilt aria-label="Crop Disease Advisor: results and architecture">
                 <p class="panel-label mono">Evaluation · README results table</p>
                 <ul class="metrics">
                   <li><span class="m-num"><b data-count="96.8" data-decimals="1">96.8</b><small>%</small></span><span class="m-cap mono">Accuracy · 38 classes</span></li>
                   <li><span class="m-num"><b data-count="97.1" data-decimals="1">97.1</b><small>%</small></span><span class="m-cap mono">AUC</span></li>
                   <li><span class="m-num"><b data-count="81.68" data-decimals="2">81.68</b><small>%</small></span><span class="m-cap mono">BERTScore F1</span></li>
                 </ul>
-                <p class="panel-label mono">Pipeline</p>
-                <ol class="flow">
-                  <li><span class="mono">in</span>Leaf photo, 224 × 224</li>
-                  <li><span class="mono">see</span>EfficientNet-B4 → disease + confidence</li>
-                  <li><span class="mono">plan</span>Qwen2.5-3B + QLoRA → JSON advice</li>
-                  <li><span class="mono">guard</span>Retry, then lookup fallback</li>
-                  <li><span class="mono">out</span>FastAPI → web app</li>
-                </ol>
+                <p class="panel-label mono">Architecture · data → model → serving</p>
+                <figure class="arch-fig">
+                <svg class="arch" viewBox="0 0 428 388" role="img" aria-labelledby="arch-crop-t arch-crop-d" focusable="false" preserveAspectRatio="xMidYMin meet">
+<title id="arch-crop-t">Crop Disease Advisor architecture</title><desc id="arch-crop-d">Data: leaf photos at 224 by 224 from PlantVillage, 38 classes across 14 crops, and an instruction dataset built from diseases, regions, seasons and farmer profiles. Model: an EfficientNet-B4 classifier names the disease; a Qwen2.5-3B model tuned with QLoRA turns it into a structured JSON plan; a guard validates the JSON, retries at a lower temperature, then falls back to a curated lookup table. Serving: a FastAPI service with predict, health and classes endpoints behind a Vite web app, in a multi-stage Docker image deployed on Render and Hugging Face Spaces.</desc>
+<defs><marker id="ah-crop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1.5 9 5 1 8.5" /></marker></defs>
+<g class="arch-band"><rect class="band" x="2" y="8" width="422" height="88" rx="14"/>
+<text class="band-t" transform="translate(16,52) rotate(-90)" text-anchor="middle">DATA</text></g>
+<g class="arch-band"><rect class="band" x="2" y="110" width="422" height="168" rx="14"/>
+<text class="band-t" transform="translate(16,194) rotate(-90)" text-anchor="middle">MODEL</text></g>
+<g class="arch-band"><rect class="band" x="2" y="292" width="422" height="88" rx="14"/>
+<text class="band-t" transform="translate(16,336) rotate(-90)" text-anchor="middle">SERVING</text></g>
+<g class="arch-e"><path class="e" d="M126 84 V121" marker-end="url(#ah-crop)"/><path class="fl" d="M126 84 V121"/></g>
+<g class="arch-e"><path class="e" d="M326 84 V121" marker-end="url(#ah-crop)"/><path class="fl" d="M326 84 V121"/></g>
+<g class="arch-e"><path class="e" d="M219 147 H232" marker-end="url(#ah-crop)"/><path class="fl" d="M219 147 H232"/></g>
+<g class="arch-e"><path class="e" d="M326 172 V186 H220 V201" marker-end="url(#ah-crop)"/><path class="fl" d="M326 172 V186 H220 V201"/></g>
+<g class="arch-e"><path class="e" d="M220 266 V284 H126 V303" marker-end="url(#ah-crop)"/><path class="fl" d="M220 266 V284 H126 V303"/></g>
+<g class="arch-e"><path class="e" d="M220 266 V284 H326 V303" marker-end="url(#ah-crop)"/><path class="fl" d="M220 266 V284 H326 V303"/></g>
+<g class="arch-n"><rect x="34" y="20" width="185" height="64" rx="10"/>
+<text class="t1" x="46" y="41">Leaf photo · 224 × 224</text>
+<text class="t2" x="46" y="57">PlantVillage · 38 classes</text>
+<text class="t2" x="46" y="70">14 crops</text>
+</g>
+<g class="arch-n"><rect x="233" y="20" width="185" height="64" rx="10"/>
+<text class="t1" x="245" y="41">Instruction set</text>
+<text class="t2" x="245" y="57">disease × region</text>
+<text class="t2" x="245" y="70">× season × profile</text>
+</g>
+<g class="arch-n"><rect x="34" y="122" width="185" height="50" rx="10"/>
+<text class="t1" x="46" y="143">EfficientNet-B4</text>
+<text class="t2" x="46" y="159">disease + confidence</text>
+</g>
+<g class="arch-n hot"><rect x="233" y="122" width="185" height="50" rx="10"/>
+<text class="t1" x="245" y="143">Qwen2.5-3B + QLoRA</text>
+<text class="t2" x="245" y="159">structured JSON plan</text>
+</g>
+<g class="arch-n"><rect x="34" y="202" width="372" height="64" rx="10"/>
+<text class="t1" x="46" y="223">Guard</text>
+<text class="t2" x="46" y="239">parse JSON → retry at lower temp</text>
+<text class="t2" x="46" y="252">→ curated lookup fallback</text>
+</g>
+<g class="arch-n"><rect x="34" y="304" width="185" height="64" rx="10"/>
+<text class="t1" x="46" y="325">FastAPI</text>
+<text class="t2" x="46" y="341">/predict · /health</text>
+<text class="t2" x="46" y="354">/classes</text>
+</g>
+<g class="arch-n"><rect x="233" y="304" width="185" height="64" rx="10"/>
+<text class="t1" x="245" y="325">Vite web app</text>
+<text class="t2" x="245" y="341">multi-stage Docker</text>
+<text class="t2" x="245" y="354">Render · HF Space</text>
+</g>
+</svg>
+                </figure>
               </aside>
             </div>
 
@@ -550,20 +844,63 @@
                 <div class="reveal"><dt class="mono">Limits</dt><dd>Evaluation is perplexity and sentence-embedding similarity on held-out Holmes dialogue. Both measure style fit; neither is a human or task-based judgement of the persona.</dd></div>
               </dl>
 
-              <aside class="case-panel" data-tilt aria-label="Persona-Modeling: results and pipeline">
+              <aside class="case-panel" data-tilt aria-label="Persona-Modeling: results and architecture">
                 <p class="panel-label mono">Base → fine-tuned</p>
                 <ul class="metrics metrics-2">
                   <li><span class="m-num"><b data-count="45.31" data-decimals="2">45.31</b><i aria-hidden="true">→</i><b data-count="7.52" data-decimals="2">7.52</b></span><span class="m-cap mono">Perplexity · ~6× lower</span></li>
                   <li><span class="m-num"><b data-count="0.096" data-decimals="3">0.096</b><i aria-hidden="true">→</i><b data-count="0.259" data-decimals="3">0.259</b></span><span class="m-cap mono">Cosine similarity</span></li>
                 </ul>
-                <p class="panel-label mono">Pipeline</p>
-                <ol class="flow">
-                  <li><span class="mono">data</span>Corpus → chat-format JSONL</li>
-                  <li><span class="mono">quant</span>Qwen2.5-7B · 4-bit NF4</li>
-                  <li><span class="mono">tune</span>LoRA r = 64 · SFTTrainer</li>
-                  <li><span class="mono">eval</span>Perplexity + cosine similarity</li>
-                  <li><span class="mono">serve</span>Modal A100 → Streamlit chat</li>
-                </ol>
+                <p class="panel-label mono">Architecture · data → model → serving</p>
+                <figure class="arch-fig">
+                <svg class="arch" viewBox="0 0 428 388" role="img" aria-labelledby="arch-pm-t arch-pm-d" focusable="false" preserveAspectRatio="xMidYMin meet">
+<title id="arch-pm-t">Sherlock Persona Model architecture</title><desc id="arch-pm-d">Data: a Holmes dialogue corpus converted to chat-format JSONL. Model: Qwen2.5-7B-Instruct loaded in 4-bit NF4 with frozen weights, plus LoRA adapters of rank 64 and alpha 16 on the q and v projections, trained with the TRL SFTTrainer and evaluated by perplexity and cosine similarity against the base model. Serving: a Modal backend on a serverless A100 that scales to zero, behind a Streamlit chat interface.</desc>
+<defs><marker id="ah-pm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1.5 9 5 1 8.5" /></marker></defs>
+<g class="arch-band"><rect class="band" x="2" y="8" width="422" height="74" rx="14"/>
+<text class="band-t" transform="translate(16,45) rotate(-90)" text-anchor="middle">DATA</text></g>
+<g class="arch-band"><rect class="band" x="2" y="96" width="422" height="182" rx="14"/>
+<text class="band-t" transform="translate(16,187) rotate(-90)" text-anchor="middle">MODEL</text></g>
+<g class="arch-band"><rect class="band" x="2" y="292" width="422" height="88" rx="14"/>
+<text class="band-t" transform="translate(16,336) rotate(-90)" text-anchor="middle">SERVING</text></g>
+<g class="arch-e"><path class="e" d="M226 70 V88 H126 V107" marker-end="url(#ah-pm)"/><path class="fl" d="M226 70 V88 H126 V107"/></g>
+<g class="arch-e"><path class="e" d="M226 70 V88 H326 V107" marker-end="url(#ah-pm)"/><path class="fl" d="M226 70 V88 H326 V107"/></g>
+<g class="arch-e"><path class="e" d="M126 172 V201" marker-end="url(#ah-pm)"/><path class="fl" d="M126 172 V201"/></g>
+<g class="arch-e"><path class="e" d="M326 172 V186 H126 V201" marker-end="url(#ah-pm)"/><path class="fl" d="M326 172 V186 H126 V201"/></g>
+<g class="arch-e"><path class="e" d="M219 234 H232" marker-end="url(#ah-pm)"/><path class="fl" d="M219 234 H232"/></g>
+<g class="arch-e"><path class="e" d="M126 266 V303" marker-end="url(#ah-pm)"/><path class="fl" d="M126 266 V303"/></g>
+<g class="arch-e"><path class="e" d="M219 336 H232" marker-end="url(#ah-pm)"/><path class="fl" d="M219 336 H232"/></g>
+<g class="arch-n"><rect x="34" y="20" width="384" height="50" rx="10"/>
+<text class="t1" x="46" y="41">Holmes corpus</text>
+<text class="t2" x="46" y="57">→ chat-format JSONL</text>
+</g>
+<g class="arch-n"><rect x="34" y="108" width="185" height="64" rx="10"/>
+<text class="t1" x="46" y="129">Qwen2.5-7B-Instruct</text>
+<text class="t2" x="46" y="145">4-bit NF4 · frozen</text>
+</g>
+<g class="arch-n hot"><rect x="233" y="108" width="185" height="64" rx="10"/>
+<text class="t1" x="245" y="129">LoRA adapters</text>
+<text class="t2" x="245" y="145">r = 64 · α = 16</text>
+<text class="t2" x="245" y="158">q_proj, v_proj</text>
+</g>
+<g class="arch-n"><rect x="34" y="202" width="185" height="64" rx="10"/>
+<text class="t1" x="46" y="223">TRL SFTTrainer</text>
+<text class="t2" x="46" y="239">QLoRA fine-tune</text>
+</g>
+<g class="arch-n"><rect x="233" y="202" width="185" height="64" rx="10"/>
+<text class="t1" x="245" y="223">Evaluation</text>
+<text class="t2" x="245" y="239">perplexity 45.3 → 7.5</text>
+<text class="t2" x="245" y="252">cosine 0.096 → 0.259</text>
+</g>
+<g class="arch-n"><rect x="34" y="304" width="185" height="64" rx="10"/>
+<text class="t1" x="46" y="325">Modal backend</text>
+<text class="t2" x="46" y="341">serverless A100</text>
+<text class="t2" x="46" y="354">scales to zero</text>
+</g>
+<g class="arch-n"><rect x="233" y="304" width="185" height="64" rx="10"/>
+<text class="t1" x="245" y="325">Streamlit chat</text>
+<text class="t2" x="245" y="341">Sherlock persona</text>
+</g>
+</svg>
+                </figure>
               </aside>
             </div>
 
@@ -617,12 +954,50 @@
                 <div class="reveal"><dt class="mono">Limits</dt><dd>A 40% sMAPE is a large typical error, so this is a working baseline rather than a pricing model I would deploy. The two figures here are the ones the repository reports.</dd></div>
               </dl>
 
-              <aside class="case-panel" data-tilt aria-label="Multimodal Price Estimator: results">
+              <aside class="case-panel" data-tilt aria-label="Multimodal Price Estimator: results and architecture">
                 <p class="panel-label mono">Results</p>
                 <ul class="metrics">
                   <li><span class="m-num"><b data-count="40.06" data-decimals="2">40.06</b><small>%</small></span><span class="m-cap mono">sMAPE · lower is better</span></li>
                   <li><span class="m-num"><b data-count="0.12" data-decimals="2">0.12</b><small>s</small></span><span class="m-cap mono">Inference / sample</span></li>
                 </ul>
+                <p class="panel-label mono">Architecture · data → model → inference</p>
+                <figure class="arch-fig">
+                <svg class="arch" viewBox="0 0 428 346" role="img" aria-labelledby="arch-pe-t arch-pe-d" focusable="false" preserveAspectRatio="xMidYMin meet">
+<title id="arch-pe-t">Multimodal Price Estimator architecture</title><desc id="arch-pe-d">Data: product content, image and text. Model: pretrained CoCa and SigLIP multimodal embeddings feed an ensemble of parallel MLP heads trained on those embeddings. Inference: a predicted price, with 40.06 percent sMAPE and about 0.12 seconds per sample as reported in the repository. The repository does not document a serving setup, so none is drawn.</desc>
+<defs><marker id="ah-pe" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1.5 9 5 1 8.5" /></marker></defs>
+<g class="arch-band"><rect class="band" x="2" y="8" width="422" height="74" rx="14"/>
+<text class="band-t" transform="translate(16,45) rotate(-90)" text-anchor="middle">DATA</text></g>
+<g class="arch-band"><rect class="band" x="2" y="96" width="422" height="154" rx="14"/>
+<text class="band-t" transform="translate(16,173) rotate(-90)" text-anchor="middle">MODEL</text></g>
+<g class="arch-band"><rect class="band" x="2" y="264" width="422" height="74" rx="14"/>
+<text class="band-t" transform="translate(16,301) rotate(-90)" text-anchor="middle">INFERENCE</text></g>
+<g class="arch-e"><path class="e" d="M226 70 V88 H126 V107" marker-end="url(#ah-pe)"/><path class="fl" d="M226 70 V88 H126 V107"/></g>
+<g class="arch-e"><path class="e" d="M226 70 V88 H326 V107" marker-end="url(#ah-pe)"/><path class="fl" d="M226 70 V88 H326 V107"/></g>
+<g class="arch-e"><path class="e" d="M126 158 V172 H226 V187" marker-end="url(#ah-pe)"/><path class="fl" d="M126 158 V172 H226 V187"/></g>
+<g class="arch-e"><path class="e" d="M326 158 V172 H226 V187" marker-end="url(#ah-pe)"/><path class="fl" d="M326 158 V172 H226 V187"/></g>
+<g class="arch-e"><path class="e" d="M226 238 V275" marker-end="url(#ah-pe)"/><path class="fl" d="M226 238 V275"/></g>
+<g class="arch-n"><rect x="34" y="20" width="384" height="50" rx="10"/>
+<text class="t1" x="46" y="41">Product content</text>
+<text class="t2" x="46" y="57">image + text (multimodal)</text>
+</g>
+<g class="arch-n"><rect x="34" y="108" width="185" height="50" rx="10"/>
+<text class="t1" x="46" y="129">CoCa</text>
+<text class="t2" x="46" y="145">multimodal embedding</text>
+</g>
+<g class="arch-n"><rect x="233" y="108" width="185" height="50" rx="10"/>
+<text class="t1" x="245" y="129">SigLIP</text>
+<text class="t2" x="245" y="145">multimodal embedding</text>
+</g>
+<g class="arch-n hot"><rect x="34" y="188" width="384" height="50" rx="10"/>
+<text class="t1" x="46" y="209">Parallel MLP ensemble</text>
+<text class="t2" x="46" y="225">small heads on the embeddings</text>
+</g>
+<g class="arch-n"><rect x="34" y="276" width="384" height="50" rx="10"/>
+<text class="t1" x="46" y="297">Predicted price</text>
+<text class="t2" x="46" y="313">40.06% sMAPE · 0.12 s / sample</text>
+</g>
+</svg>
+                </figure>
               </aside>
             </div>
 
@@ -773,7 +1148,7 @@
           <div class="timeline">
             <div class="tl-block">
               <h3 class="tl-label mono">Experience</h3>
-              <article class="tl-entry reveal">
+              <article class="tl-entry">
                 <p class="tl-date mono">Jan 2025 – Jun 2025</p>
                 <div>
                   <h4>Data Scientist Intern</h4>
@@ -788,7 +1163,7 @@
 
             <div class="tl-block">
               <h3 class="tl-label mono">Education</h3>
-              <article class="tl-entry reveal">
+              <article class="tl-entry">
                 <p class="tl-date mono">2025 – Present</p>
                 <div>
                   <h4>M.Tech, Artificial Intelligence</h4>
@@ -796,7 +1171,7 @@
                   <p class="tl-meta mono">CGPA 9.0</p>
                 </div>
               </article>
-              <article class="tl-entry reveal">
+              <article class="tl-entry">
                 <p class="tl-date mono">2021 – 2025</p>
                 <div>
                   <h4>B.E., Computer Engineering</h4>
@@ -808,7 +1183,7 @@
 
             <div class="tl-block">
               <h3 class="tl-label mono">Achievements</h3>
-              <article class="tl-entry reveal">
+              <article class="tl-entry">
                 <p class="tl-date mono">2025</p>
                 <div>
                   <p class="tl-big" aria-hidden="true"><span class="mono">AIR</span>121</p>
@@ -816,7 +1191,7 @@
                   <p class="tl-meta mono">GATE score 780</p>
                 </div>
               </article>
-              <article class="tl-entry reveal">
+              <article class="tl-entry">
                 <p class="tl-date mono">2025</p>
                 <div>
                   <p class="tl-big" aria-hidden="true"><span class="mono">Rank</span>11</p>
@@ -828,11 +1203,11 @@
 
             <div class="tl-block">
               <h3 class="tl-label mono">Certifications</h3>
-              <article class="tl-entry reveal">
+              <article class="tl-entry">
                 <p class="tl-date mono">2025</p>
                 <div><h4>Python Data Structures and Algorithms</h4><p class="tl-org">Udemy</p></div>
               </article>
-              <article class="tl-entry reveal">
+              <article class="tl-entry">
                 <p class="tl-date mono">2023</p>
                 <div><h4>Machine Learning and Data Science</h4><p class="tl-org">Udemy</p></div>
               </article>
@@ -947,6 +1322,6 @@
   <script src="js/vendor/gsap.min.js"></script>
   <script src="js/vendor/ScrollTrigger.min.js"></script>
   <script src="js/vendor/lenis.min.js"></script>
-  <script src="js/main.js?v=4"></script>
+  <script src="js/main.js?v=23"></script>
 </body>
 </html>
